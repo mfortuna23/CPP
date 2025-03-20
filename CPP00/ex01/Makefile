@@ -6,23 +6,33 @@
 #    By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 11:35:33 by mfortuna          #+#    #+#              #
-#    Updated: 2025/03/19 14:35:39 by mfortuna         ###   ########.fr        #
+#    Updated: 2025/03/20 14:26:23 by mfortuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= phonebook
 CPP		= c++
 CPPFLG	= -Wall -Wextra -Werror -std=c++98
-FILES	= phonebook.cpp
+SDIR	= src/
+SRC		= $(addprefix $(SDIR), main.cpp)
+ODIR	= obj/
+OBJS	= $(patsubst $(SDIR)%.cpp,$(ODIR)%.o,$(SRC))
 
+all: $(NAME)
 
+$(NAME): $(OBJS)
+	$(CPP) $(CPPFLG) $(OBJS) -o $(NAME)
 
-all : $(NAME)
+$(ODIR)%.o: $(SDIR)%.cpp | $(ODIR)
+	$(CPP) $(CPPFLG) -g -I . -c $< -o $@
 
-$(NAME) : $(FILES)
-	$(CPP) $(CPPFLG) $(FILES) -o $(NAME)
+$(ODIR):
+	mkdir -p $(ODIR)
 
-clean :
-	rm $(NAME)
+clean:
+	rm -fr $(ODIR)
 
-re : clean $(NAME)
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 11:19:50 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/03/19 14:35:48 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:58:07 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,27 @@
 
 int	main(void)
 {
-	std::string temp;
-	//int		i = 0;
+	std::string input;
+	int		i = 0;
 	
 	std::cout << "Welcome to your phonebook" << std::endl;
-	std::cout << "hello";
-	std::cin >> temp;
+	std::cin >> input;
 	
-	while (temp == "EXIT"){
-	}
-	/* while (strcmp(temp, "EXIT")){
-		if (!strncmp(s, "ADD ", 4)){
+	while (input != "EXIT"){
+		if (input == "ADD"){
 			i++;
 			if(i > 8)
-				std::cout << "Contact n1 was deleted\n";
-			std::cout << "hello\n";
-			std::cout << strchr(s, ' ');
-			std::cout <<" was added\n";
+				std::cout << "Contact n1 was deleted" << std::endl;
+			std::cout << "NAME :" << std::endl;
+			std::cin >> input;
 		}
-		else if (!strncmp(s, "SEARCH ", 7)){
-			std::cout << strchr((char *)s, ' ');
+		else if (input == "SEARCH"){
+			std::cout << "display ..." << std::endl;
 		}
 		else
-			std::cout <<"unknown command, please try \"ADD\" or \"SEARCH\"";
-		std::cin >> s;			
-	} */
-	std::cout << "All contacts have been delseted\n";
+			std::cout << "Wrong command, plz try \"ADD\" or \"SEARCH\" or \"EXIT\"" << std::endl;
+		std::cin >> input;
+	}
+	std::cout << "All contacts have been deleted\n";
 	return (0);
 }
