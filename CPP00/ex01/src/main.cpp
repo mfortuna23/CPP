@@ -6,36 +6,35 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 11:19:50 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/03/20 14:58:07 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/03/21 18:14:37 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <cstring>
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 int	main(void)
 {
 	std::string input;
-	int		i = 0;
-	
-	std::cout << "Welcome to your phonebook" << std::endl;
-	std::cin >> input;
-	
+	PhoneBook book;
+
+	std::cout << "Welcome to your phonebook\nWhat do you want to do?" << std::endl;
+	std::getline(std::cin, input);
 	while (input != "EXIT"){
+		std::cin.clear();
 		if (input == "ADD"){
-			i++;
-			if(i > 8)
-				std::cout << "Contact n1 was deleted" << std::endl;
-			std::cout << "NAME :" << std::endl;
-			std::cin >> input;
+			book.AddContact();    
 		}
 		else if (input == "SEARCH"){
-			std::cout << "display ..." << std::endl;
+			book.Search();
 		}
 		else
 			std::cout << "Wrong command, plz try \"ADD\" or \"SEARCH\" or \"EXIT\"" << std::endl;
-		std::cin >> input;
+		std::cout << "What do you want to do next?" << std::endl;
+		std::getline(std::cin, input);
 	}
-	std::cout << "All contacts have been deleted\n";
+	std::cout << "All contacts have been deleted"<< std::endl;
 	return (0);
 }
