@@ -6,49 +6,77 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:27:21 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/03/21 18:35:50 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/03/22 09:41:02 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <cstring>
 
-void	PhoneBook::AddContact(void)
+int		PhoneBook::maxContacts(void)
+{
+	int i = 0;
+	while (i < MAX_CONTACTS){
+		if (elem[i].getIndex() == 1)
+			break ;
+		i++;
+	}
+	elem[i].setIndex(9);
+	for (int x = 0; x < MAX_CONTACTS; x++){
+		elem[x].setIndex(elem[x].getIndex() - 1);
+	}
+	return (i);
+}
+
+void	PhoneBook::addContact(void)
 {
 	std::string input;
 	int			number = 0;
 	unsigned	i = 0;
 
 	while (i < MAX_CONTACTS){
-		if (elem[i].GetIndex() == 0)
+		if (elem[i].getIndex() == 0)
 			break ;
 		i++;
 	}
 	if (i == MAX_CONTACTS){
-		std::cout << "Reach maximum contacts" << std::endl;
-		return ;
+		i = PhoneBook::maxContacts();
 	}
-	elem[i].SetIndex(i + 1);
+	else
+		elem[i].setIndex(i + 1);
 	std::cout << "First name: ";
 	std::getline(std::cin, input);
-	elem[i].SetFirstName(input);
+	elem[i].setFirstName(input);
 	std::cout << "Last name: ";
 	std::getline(std::cin, input);
-	elem[i].SetLastName(input);
-	std::cout << "Nickname: ";
+	elem[i].setLastName(input);
+	std::cout << "NickName: ";
 	std::getline(std::cin, input);
-	elem[i].SetNickName(input);
+	elem[i].setNickName(input);
 	std::cout << "Darkest secret: ";
 	std::getline(std::cin, input);
-	elem[i].SetDarkestSecret(input);
+	elem[i].setDarkestSecret(input);
 	std::cout << "Phone number: ";
 	std::getline(std::cin, input);
-	elem[i].SetPhoneNumber(number);
+	elem[i].setPhoneNumber(number);
 	std::cin.clear();
 	return ;
 }
 
-void	PhoneBook::Search(void)
+void	PhoneBook::search(void) //TODO fix me
 {
+	for (int i = 0; i < MAX_CONTACTS; i++){
+		if (elem[i].getIndex() == 0){
+			if (i == 0)
+				std::cout << "You have no saved contacts" << std::endl;
+			return ;
+		}
+		std::cout << "\t";
+		std::cout << elem[i].getIndex();
+		std::cout << "\t|\t";
+		std::cout << elem[i].getFirstName();
+		std::cout << "\t|\t";
+		std::cout << elem[i].getLastName() << std::endl;
+	}
 	return ;
 }

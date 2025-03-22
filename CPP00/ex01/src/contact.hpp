@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 10:59:04 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/03/21 17:31:40 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/03/22 09:10:39 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@
 
 class Contact{
 	private:
-		std::string FirstName;
-		std::string LastName;
-		std::string NickName;
-		std::string DarkestSecret;
-		int			PhoneNumber;
-		int			Index;
+		std::string firstName;
+		std::string lastName;
+		std::string nickName;
+		std::string darkestSecret;
+		int			phoneNumber;
+		int			index;
 	public:
-		Contact() : FirstName(""), LastName(""), NickName(""), DarkestSecret(""),
-			PhoneNumber(0), Index(0) {}
-		void		SetFirstName(std::string name) {FirstName = name;};
-		void		SetLastName(std::string name) {LastName = name;};
-		void		SetNickName(std::string name) {NickName = name;};
-		void		SetDarkestSecret(std::string secret) {DarkestSecret = secret;};
-		void		SetPhoneNumber(int number) {PhoneNumber = number;};
-		void		SetIndex(int number) {Index = number;};
-		int			GetIndex(void) {return Index;};
-		std::string	GetFirstName(void) {return FirstName;};
-		std::string	GetLastName(void) {return LastName;};;
-		std::string	GetNicktName(void) {return NickName;};;
-		std::string	GetDarkestSecret(void) {return DarkestSecret;};;
+		Contact() : firstName(""), lastName(""), nickName(""), darkestSecret(""),
+			phoneNumber(0), index(0) {}
+		void		setFirstName(std::string name) {firstName = name;};
+		void		setLastName(std::string name) {lastName = name;};
+		void		setNickName(std::string name) {nickName = name;};
+		void		setDarkestSecret(std::string secret) {darkestSecret = secret;};
+		void		setPhoneNumber(int number) {phoneNumber = number;};
+		void		setIndex(int number) {index = number;};
+		int			getIndex(void) {return index;};
+		std::string	getFirstName(void) {return firstName;};
+		std::string	getLastName(void) {return lastName;};;
+		std::string	getNicktName(void) {return nickName;};;
+		std::string	getDarkestSecret(void) {return darkestSecret;};;
 } ;
 #endif
