@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:27:21 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/03/24 11:29:05 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/03/24 13:29:56 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ std::string tenChars(std::string input)
 	input.resize(9);
 	input.resize(10, '.');
 	return input;
+}
+bool	PhoneBook::setContact(int index, std::string input, int type)
+{
+	
+}
+void	PhoneBook::resetContact(int index)
+{
+	
 }
 
 void	PhoneBook::addContact(void)

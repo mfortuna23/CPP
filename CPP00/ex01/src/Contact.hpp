@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 10:59:04 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/03/24 09:56:15 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/03/24 13:34:40 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ class Contact{
 		std::string	getNickName(void) {return nickName;};
 		std::string	getDarkestSecret(void) {return darkestSecret;};
 		int			getPhoneNumber(void) {return phoneNumber;};
+		bool		setContact(std::string input, int type);
+		void		resetContact(void);
 } ;
 #endif

@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 10:57:10 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/03/24 13:30:24 by mfortuna         ###   ########.fr       */
+/*   Created: 2025/03/24 13:31:55 by mfortuna          #+#    #+#             */
+/*   Updated: 2025/03/24 13:36:06 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-# include <iostream>
-# include <iomanip>
-# include "Contact.hpp"
+#include "Contact.hpp"
 
-#define MAX_CONTACTS 8
+void	Contact::resetContact(void)
+{
+	firstName = "";
+	
+}
 
-class PhoneBook{
-	private:
-		Contact elem[MAX_CONTACTS];
-	public:
-		int		maxContacts(void);
-		void	addContact(void);
-		void	search(void);
-};
-
-#endif
+bool	Contact::setContact(std::string input, int type)
+{
+	
+}
