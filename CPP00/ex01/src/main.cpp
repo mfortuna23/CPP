@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 11:19:50 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/03/22 09:02:28 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/03/24 09:32:04 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(void)
 	while (input != "EXIT"){
 		std::cin.clear();
 		if (input == "ADD"){
-			book.addContact();    
+			book.addContact();
 		}
 		else if (input == "SEARCH"){
 			book.search();

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.hpp                                        :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 10:59:04 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/03/22 09:10:39 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/03/24 09:56:15 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ class Contact{
 		void		setIndex(int number) {index = number;};
 		int			getIndex(void) {return index;};
 		std::string	getFirstName(void) {return firstName;};
-		std::string	getLastName(void) {return lastName;};;
-		std::string	getNicktName(void) {return nickName;};;
-		std::string	getDarkestSecret(void) {return darkestSecret;};;
+		std::string	getLastName(void) {return lastName;};
+		std::string	getNickName(void) {return nickName;};
+		std::string	getDarkestSecret(void) {return darkestSecret;};
+		int			getPhoneNumber(void) {return phoneNumber;};
 } ;
 #endif
