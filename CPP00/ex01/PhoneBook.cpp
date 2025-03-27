@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:27:21 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/03/25 14:25:27 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:15:46 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,8 @@ void	PhoneBook::search(void)
 	}
 	std::cout << "Enter the index of the contact you want to see" << std::endl;
 	getline(std::cin, input);
-	if (std::cin.eof() || input.empty() || !is_number(input) || input.length() > 1 || input[0] > (nContacts + 48)) {
+	if (std::cin.eof() || input.empty() || !is_number(input) || input.length() > 1 || \
+	input[0] > (nContacts + 48) || input[0] == '0') {
 		std::cout << "Error" << std::endl;
 		return ;
 	}

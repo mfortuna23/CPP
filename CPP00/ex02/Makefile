@@ -5,16 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/19 11:35:33 by mfortuna          #+#    #+#              #
-#    Updated: 2025/03/27 11:49:45 by mfortuna         ###   ########.fr        #
+#    Created: 2025/03/27 10:04:47 by mfortuna          #+#    #+#              #
+#    Updated: 2025/03/27 10:06:45 by mfortuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= phonebook
+NAME	= acccount
 CPP		= c++
 CPPFLG	= -Wall -Wextra -Werror -std=c++98
-SRC		= main.cpp PhoneBook.cpp Contact.cpp
-OBJS	= $(SRC:%.cpp=%.o)
+OBJS	=  tests.o Account.o
 
 all: $(NAME)
 
@@ -25,7 +24,7 @@ $(NAME): $(OBJS)
 	$(CPP) $(CPPFLG) -g -I . -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -fr $(ODIR)
 
 fclean: clean
 	rm -f $(NAME)

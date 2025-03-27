@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/19 11:35:33 by mfortuna          #+#    #+#              #
-#    Updated: 2025/03/27 11:49:45 by mfortuna         ###   ########.fr        #
+#    Created: 2025/03/27 15:36:11 by mfortuna          #+#    #+#              #
+#    Updated: 2025/03/27 15:47:48 by mfortuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= phonebook
+NAME	= zombie
 CPP		= c++
 CPPFLG	= -Wall -Wextra -Werror -std=c++98
-SRC		= main.cpp PhoneBook.cpp Contact.cpp
+SRC		= main.cpp Zompie.cpp newZombie.cpp ramdomChump.cpp
 OBJS	= $(SRC:%.cpp=%.o)
 
 all: $(NAME)
