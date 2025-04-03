@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/27 15:40:01 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/03 11:49:44 by mfortuna         ###   ########.fr       */
+/*   Created: 2025/03/27 15:37:20 by mfortuna          #+#    #+#             */
+/*   Updated: 2025/04/03 12:24:16 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-int main(void)
-{
-	Zombie *newZ;
+# include <iostream>
+# include <cstring>
 
-	newZ = newZombie("");
-	randomChump("NotAllocated");
-	newZ->annouce();
-	delete newZ;
-	return 0;
-}
+class Zombie{
+	private :
+		std::string name ;
+	public :
+		void		annouce(void);
+		void		setName(std::string newName){name = newName;};
+		std::string	getName(void){return name;};
+} ;
+
+Zombie *zombieHorde (int n, std::string name);
+
+#endif

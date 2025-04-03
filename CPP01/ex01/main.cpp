@@ -5,20 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/27 15:40:01 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/03 11:49:44 by mfortuna         ###   ########.fr       */
+/*   Created: 2025/04/03 12:13:18 by mfortuna          #+#    #+#             */
+/*   Updated: 2025/04/03 12:27:45 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main(void)
-{
-	Zombie *newZ;
+int main (void){
+	Zombie  *horde;
 
-	newZ = newZombie("");
-	randomChump("NotAllocated");
-	newZ->annouce();
-	delete newZ;
-	return 0;
+	horde = zombieHorde(5, "hello");
+	delete horde ; //TODO fix
+	return (0);
 }
