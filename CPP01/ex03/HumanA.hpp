@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 17:39:15 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/08 15:27:14 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:32:03 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class HumanA{
 	public :
 		HumanA	(std::string nName, Weapon &wType);
 		void 	attack(void);
-		~HumanA	() {};
+		~HumanA	();
 } ;
 
 #endif

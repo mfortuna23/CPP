@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 10:47:56 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/08 15:45:46 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:30:55 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class HumanB {
 		HumanB (std::string nName);
 		void	setWeapon(Weapon wType);
 		void	attack(void);
+		~HumanB	();
 } ;
 
 #endif
