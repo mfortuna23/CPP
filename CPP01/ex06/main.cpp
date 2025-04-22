@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/27 15:37:20 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/08 15:43:27 by mfortuna         ###   ########.fr       */
+/*   Created: 2025/04/22 15:11:19 by mfortuna          #+#    #+#             */
+/*   Updated: 2025/04/22 15:20:45 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#include "harl.hpp"
 
-# include <iostream>
-# include <cstring>
-
-class Zombie{
-	private :
-		std::string name ;
-	public :
-		void		annouce(void);
-		void		setName(std::string newName);
-		std::string	getName(void);
-} ;
-
-Zombie *zombieHorde (int n, std::string name);
-
-#endif
+int main (int argc, char **argv)
+{
+	if (argc != 2)
+		return 1;
+	harl mHarl;
+	mHarl.complain(argv[1]);
+}

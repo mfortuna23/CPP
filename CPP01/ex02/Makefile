@@ -6,14 +6,14 @@
 #    By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 12:10:08 by mfortuna          #+#    #+#              #
-#    Updated: 2025/04/04 16:14:48 by mfortuna         ###   ########.fr        #
+#    Updated: 2025/04/04 17:34:06 by mfortuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= zombiehorde
+NAME	= brain
 CPP		= c++
 CPPFLG	= -Wall -Wextra -Werror -std=c++98
-SRC		= main.cpp Zombie.cpp zombieHorde.cpp
+SRC		= main.cpp 
 OBJS	= $(SRC:%.cpp=%.o)
 
 all: $(NAME)

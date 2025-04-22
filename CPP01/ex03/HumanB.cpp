@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/27 15:37:20 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/08 15:43:27 by mfortuna         ###   ########.fr       */
+/*   Created: 2025/04/07 11:07:22 by mfortuna          #+#    #+#             */
+/*   Updated: 2025/04/08 15:46:18 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#include "HumanB.hpp"
 
-# include <iostream>
-# include <cstring>
+HumanB::HumanB (std::string nName) : name(nName), type(NULL){}
 
-class Zombie{
-	private :
-		std::string name ;
-	public :
-		void		annouce(void);
-		void		setName(std::string newName);
-		std::string	getName(void);
-} ;
+void	HumanB::attack(void){
 
-Zombie *zombieHorde (int n, std::string name);
+	std::cout << name << " attacks with their ";
+	if (!type || type->getWeapon().empty())
+		std::cout << "hands" << std::endl;
+	else
+		std::cout << type->getWeapon() << std::endl;
+}
 
-#endif
+void	HumanB::setWeapon(Weapon wType){
+	type = &wType;}
