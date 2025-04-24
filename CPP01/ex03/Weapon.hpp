@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 17:34:46 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/22 16:58:04 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/04/24 10:25:56 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Weapon{
 	public:
 		Weapon(std::string nType);
 		void		setType(std::string nType);
-		std::string getWeapon(void);
+		const std::string& getWeapon(void);
 		~Weapon	() {};
 } ;
 

@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:37:20 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/23 18:41:40 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/04/24 10:21:01 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ class Zombie{
 		std::string	getName(void);
 } ;
 
-Zombie *zombieHorde (int n, std::string name);
+Zombie *zombieHorde (int N, std::string name);
 
 #endif
