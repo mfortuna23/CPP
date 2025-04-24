@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:37:11 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/22 14:59:43 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/04/22 18:19:04 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	harl::error(void){
 }
 void	harl::complain(std::string level){
 	void (harl::*actions[4])() = {&harl::debug, &harl::info, &harl::warning, &harl::error};
-	std::string input[4] = {"DEGUB", "INFO", "WARNING", "ERROR"};
+	std::string input[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 	for (int i = 0; i < 4; i++)
 	{
