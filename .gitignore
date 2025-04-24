@@ -1,3 +1,4 @@
 *.json
 .vscode
 *.o
+.Ds_store

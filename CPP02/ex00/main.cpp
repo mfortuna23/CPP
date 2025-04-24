@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/27 15:37:07 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/23 19:01:59 by mfortuna         ###   ########.fr       */
+/*   Created: 2025/04/23 14:22:31 by mfortuna          #+#    #+#             */
+/*   Updated: 2025/04/23 16:17:11 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Fixed.hpp"
 
-Zombie::Zombie(){}
-Zombie::~Zombie(){
-	std::cout << this->getName() << ": Destructor called" << std::endl;
+int main( void ) {
+
+	Fixed a;
+	Fixed b( a );
+	Fixed c;
+
+	c = b;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return 0;
 }
-void		Zombie::annouce(void){
-	std::cout << name;
-	std::cout << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
-
-void		Zombie::setName(std::string newName){
-	name = newName;}
-
-std::string	Zombie::getName(void){
-	return name;}
