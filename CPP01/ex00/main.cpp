@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:40:01 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/03 11:49:44 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:28:36 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int main(void)
 {
 	Zombie *newZ;
 
-	newZ = newZombie("");
-	randomChump("NotAllocated");
+	newZ = newZombie("Zombie");
 	newZ->annouce();
+	randomChump("Random Chump");
 	delete newZ;
 	return 0;
 }
