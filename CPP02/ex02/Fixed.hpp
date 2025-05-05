@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:03 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/05 12:58:50 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/05 14:44:35 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,24 @@ class Fixed{
 		void	setRawBits(int const raw);
 		int		toInt(void) const;
 		float	toFloat(void) const;
+		//comparison operators
+		bool operator== (const Fixed& other) const;
+		bool operator!= (const Fixed& other) const;
+		bool operator> (const Fixed& other) const;
+		bool operator>= (const Fixed& other) const;
+		bool operator< (const Fixed& other) const;
+		bool operator<= (const Fixed& other) const;
+		// arithmetic operators
+		Fixed& operator+ (const Fixed& other);
+		Fixed& operator- (const Fixed& other);
+		Fixed& operator* (const Fixed& other);
+		Fixed& operator/ (const Fixed& other);
+		// increment/decrement operators
+		Fixed& operator++ ();
+		Fixed& operator-- ();
+		Fixed& operator++ (int);
+		Fixed& operator-- (int);
+		
 		~Fixed();
 } ;
 

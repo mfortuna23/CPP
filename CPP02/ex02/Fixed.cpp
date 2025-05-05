@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:36 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/05 12:59:29 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:00:39 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,84 @@ int	Fixed::toInt(void) const{
 float Fixed::toFloat(void) const{
 	return static_cast<float>(fixedPoint) / (1 << fractionalBits);;
 }
+
+bool Fixed::operator== (const Fixed& other) const{
+	if (fixedPoint == other.getRawBits())
+		return true;
+	return false;
+}
+bool Fixed::operator!= (const Fixed& other) const{
+	if (fixedPoint != other.getRawBits())
+		return true;
+	return false;
+}
+bool Fixed::operator> (const Fixed& other) const{
+	if (fixedPoint > other.getRawBits())
+		return true;
+	return false;
+}
+bool Fixed::operator>= (const Fixed& other) const{
+	if (fixedPoint >= other.getRawBits())
+		return true;
+	return false;
+}
+bool Fixed::operator< (const Fixed& other) const{
+	if (fixedPoint < other.getRawBits())
+		return true;
+	return false;
+}
+bool Fixed::operator<= (const Fixed& other) const{
+	if (fixedPoint <= other.getRawBits())
+		return true;
+	return false;
+}
+
+Fixed& Fixed::operator+ (const Fixed& other){
+	Fixed	*nObj;
+	nObj->setRawBits(fixedPoint + other.getRawBits());
+	return *nObj;
+}
+Fixed& Fixed::operator- (const Fixed& other){
+	Fixed	*nObj;
+	nObj->setRawBits(fixedPoint - other.getRawBits());
+	return *nObj;	
+}
+Fixed& Fixed::operator* (const Fixed& other){
+	Fixed	*nObj;
+	nObj->setRawBits(fixedPoint * other.getRawBits());
+	return *nObj;
+}
+Fixed& Fixed::operator/ (const Fixed& other){
+	Fixed *nObj;
+	if (fixedPoint == 0 || other.getRawBits() == 0)
+		nObj->setRawBits(0);
+	else
+		nObj->setRawBits(fixedPoint / other.getRawBits());
+	return *nObj;
+}
+
+Fixed& Fixed::operator++ (){
+	this->setRawBits(this->getRawBits() + 1);
+	return *this;
+}
+Fixed& Fixed::operator-- (){
+	this->setRawBits(this->getRawBits() - 1);
+	return *this;
+}
+Fixed& Fixed::operator++ (int){
+	Fixed *tmp(this);
+	this->setRawBits(this->getRawBits() + 1);
+	return *tmp;
+}
+Fixed& Fixed::operator-- (int){
+	Fixed *tmp(this);
+	this->setRawBits(this->getRawBits() - 1);
+	return *tmp;
+}
+
 Fixed::~Fixed(){
 	std::cout << yellow << "Destructor called" << reset << std::endl;
 }
-
 std::ostream &operator<<(std::ostream &out, const Fixed &fix){
 	out << fix.toFloat();
 	return out;

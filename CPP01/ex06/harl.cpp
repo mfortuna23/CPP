@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:11:29 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/24 08:44:37 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:25:19 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void	harl::complain(std::string level){
 		case 0 :
 			debug();
 		case 1 :
-			warning();
-		case 2 :
 			info();
+		case 2 :
+			warning();
 		case 3 :
 			error();
 	}

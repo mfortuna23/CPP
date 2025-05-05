@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 10:47:56 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/02 17:30:22 by mfortuna         ###   ########.fr       */
+/*   Created: 2025/04/23 14:22:31 by mfortuna          #+#    #+#             */
+/*   Updated: 2025/05/05 14:57:33 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_HPP
-# define HUMANB_HPP
+#include "Fixed.hpp"
 
-# include "Weapon.hpp"
-
-class HumanB {
-	private:
-		std::string name;
-		Weapon *type;
-	public:
-		HumanB (std::string nName);
-		void	setWeapon(Weapon &wType);
-		void	attack(void);
-		~HumanB	();
-} ;
-
-#endif
+int main( void ) {
+	Fixed a;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	//std::cout << Fixed::max( a, b ) << std::endl;
+	return 0;
+	}
