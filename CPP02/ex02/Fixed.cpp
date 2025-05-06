@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:36 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/05 15:00:39 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/06 11:50:00 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,28 +81,25 @@ bool Fixed::operator<= (const Fixed& other) const{
 	return false;
 }
 
-Fixed& Fixed::operator+ (const Fixed& other){
-	Fixed	*nObj;
-	nObj->setRawBits(fixedPoint + other.getRawBits());
-	return *nObj;
+const Fixed Fixed::operator+ (const Fixed& other){
+	Fixed	nObj(fixedPoint + other.getRawBits());
+	return nObj;
 }
-Fixed& Fixed::operator- (const Fixed& other){
-	Fixed	*nObj;
-	nObj->setRawBits(fixedPoint - other.getRawBits());
-	return *nObj;	
+const Fixed Fixed::operator- (const Fixed& other){
+	Fixed	nObj(fixedPoint - other.getRawBits());
+	return nObj;	
 }
-Fixed& Fixed::operator* (const Fixed& other){
-	Fixed	*nObj;
-	nObj->setRawBits(fixedPoint * other.getRawBits());
-	return *nObj;
+const Fixed Fixed::operator* (const Fixed& other){
+	Fixed	nObj(fixedPoint * other.getRawBits());
+	return nObj;
 }
-Fixed& Fixed::operator/ (const Fixed& other){
-	Fixed *nObj;
+const Fixed Fixed::operator/ (const Fixed& other){
+	Fixed nObj;
 	if (fixedPoint == 0 || other.getRawBits() == 0)
-		nObj->setRawBits(0);
+		nObj = Fixed(0);
 	else
-		nObj->setRawBits(fixedPoint / other.getRawBits());
-	return *nObj;
+		nObj = Fixed(fixedPoint / other.getRawBits());
+	return nObj;
 }
 
 Fixed& Fixed::operator++ (){

@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:11:29 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/02 17:25:19 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/06 10:56:57 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	harl::info(void){
 }
 void	harl::warning(void){
 	std::cout << "I think I deserve to have some extra bacon for free." 
-	<< "I’ve been coming for years, whereas you started working here just"
+	<< " I’ve been coming for years, whereas you started working here just"
 	<< " last month." << std::endl;
 }
 void	harl::error(void){
@@ -39,7 +39,8 @@ void	harl::complain(std::string level){
 		i++;
 	}
 	if (i >= 4){
-		std::cout << level << ": is wrong." << std::endl;
+		std::cout << level << ": is wrong. Plz try \"DEBUG\" \"INFO\""
+		<< " \"WARNING\" \"ERROR\"" << std::endl;
 		return ;
 	}
 	switch (i){

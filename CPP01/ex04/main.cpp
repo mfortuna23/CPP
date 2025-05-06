@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:03:18 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/22 17:42:52 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/06 14:33:54 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 int	replaceStrInFile(std::string name, std::string s1, std::string s2){
 	std::ifstream		file(name.c_str());
-	std::fstream		nFile(name.c_str());
 	std::stringstream	buffer;
 	std::string			nContent;
 	size_t 				i = 0;
@@ -40,6 +39,9 @@ int	replaceStrInFile(std::string name, std::string s1, std::string s2){
 			nContent += content[i++];
 	}
 	file.close();
+	i = name.length();
+	name.append(".replace");
+	std::ofstream		nFile(name.c_str());
 	if (!nFile){
 		std::cout << "Cant write in: " << name << std::endl;
 		return (1);

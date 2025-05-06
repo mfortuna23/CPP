@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:11:19 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/22 15:20:45 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/06 10:49:47 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int main (int argc, char **argv)
 {
-	if (argc != 2)
-		return 1;
+	if (argc != 2){
+		std::cout << "Error: Invalid number of arguments" << std::endl;
+		return 1;}
 	harl mHarl;
 	mHarl.complain(argv[1]);
 }
