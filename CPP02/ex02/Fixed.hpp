@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:03 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/06 11:49:48 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/06 15:11:58 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ class Fixed{
 		const Fixed operator* (const Fixed& other);
 		const Fixed operator/ (const Fixed& other);
 		// increment/decrement operators
-		Fixed& operator++ ();
-		Fixed& operator-- ();
-		Fixed& operator++ (int);
-		Fixed& operator-- (int);
+		Fixed operator++ ();
+		Fixed operator-- ();
+		Fixed operator++ (int);
+		Fixed operator-- (int);
 		
 		~Fixed();
 } ;

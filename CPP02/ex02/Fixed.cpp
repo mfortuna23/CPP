@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:36 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/06 11:50:00 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/06 15:35:40 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ bool Fixed::operator<= (const Fixed& other) const{
 		return true;
 	return false;
 }
-
+//TO FLOAT
 const Fixed Fixed::operator+ (const Fixed& other){
 	Fixed	nObj(fixedPoint + other.getRawBits());
 	return nObj;
@@ -102,23 +102,25 @@ const Fixed Fixed::operator/ (const Fixed& other){
 	return nObj;
 }
 
-Fixed& Fixed::operator++ (){
+Fixed Fixed::operator++ (){
 	this->setRawBits(this->getRawBits() + 1);
 	return *this;
 }
-Fixed& Fixed::operator-- (){
+Fixed Fixed::operator-- (){
 	this->setRawBits(this->getRawBits() - 1);
 	return *this;
 }
-Fixed& Fixed::operator++ (int){
-	Fixed *tmp(this);
+Fixed Fixed::operator++ (int){
+	Fixed tmp(4);
+	tmp.setRawBits(this->getRawBits());
 	this->setRawBits(this->getRawBits() + 1);
-	return *tmp;
+	return tmp;
 }
-Fixed& Fixed::operator-- (int){
-	Fixed *tmp(this);
+Fixed Fixed::operator-- (int){
+	Fixed tmp(4);
+	tmp.setRawBits(this->getRawBits());
 	this->setRawBits(this->getRawBits() - 1);
-	return *tmp;
+	return tmp;
 }
 
 Fixed::~Fixed(){

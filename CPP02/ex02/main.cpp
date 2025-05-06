@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:22:31 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/06 11:51:39 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/06 15:31:46 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int main( void ) {
 	Fixed a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	Fixed const c( Fixed( 1 ) + Fixed( 2 ) );
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;
 	std::cout << a << std::endl;
@@ -22,6 +23,7 @@ int main( void ) {
 	std::cout << a << std::endl;
 	
 	std::cout << b << std::endl;
+	std::cout << c << std::endl;
 	
 	//std::cout << Fixed::max( a, b ) << std::endl;
 	return 0;
