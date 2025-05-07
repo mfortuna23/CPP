@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:03:18 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/06 14:33:54 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/07 15:39:25 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,18 @@ int	replaceStrInFile(std::string name, std::string s1, std::string s2){
 	return 0;
 }
 
-int main (void){
+int main (int argc, char **argv){
 	std::string fileName;
 	std::string s1;
 	std::string s2;
 
-	std::cout << "Enter file name: ";
-	std::getline(std::cin, fileName);
-	if (std::cin.eof() || fileName.empty())
+	if (argc != 4){
+		std::cout << "Error: invalid number of arguments. plz try <filename> <s1> <s2>"
+		<< std::endl;
 		return 1;
-	std::cout << "Enter first string: ";
-	std::getline(std::cin, s1);
-	if (std::cin.eof() || s1.empty())
-		return 1;
-	std::cout << "Enter second string: ";
-	std::getline(std::cin, s2);
-	if (std::cin.eof() || s2.empty())
-		return 1;
+	}
+	fileName = argv[1];
+	s1 = argv[2];
+	s2 = argv[3];
 	return (replaceStrInFile(fileName, s1, s2));
 }

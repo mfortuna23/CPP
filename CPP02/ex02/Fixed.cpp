@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:36 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/06 15:35:40 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/07 19:00:20 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,23 +82,23 @@ bool Fixed::operator<= (const Fixed& other) const{
 }
 //TO FLOAT
 const Fixed Fixed::operator+ (const Fixed& other){
-	Fixed	nObj(fixedPoint + other.getRawBits());
+	Fixed	nObj(this->toFloat() + other.toFloat());
 	return nObj;
 }
 const Fixed Fixed::operator- (const Fixed& other){
-	Fixed	nObj(fixedPoint - other.getRawBits());
+	Fixed	nObj(this->toFloat() - other.toFloat());
 	return nObj;	
 }
 const Fixed Fixed::operator* (const Fixed& other){
-	Fixed	nObj(fixedPoint * other.getRawBits());
+	Fixed	nObj(this->toFloat() * other.toFloat());
 	return nObj;
 }
 const Fixed Fixed::operator/ (const Fixed& other){
 	Fixed nObj;
-	if (fixedPoint == 0 || other.getRawBits() == 0)
+	if (this->toFloat() == 0 || other.toFloat() == 0)
 		nObj = Fixed(0);
 	else
-		nObj = Fixed(fixedPoint / other.getRawBits());
+		nObj = Fixed(this->toFloat() / other.toFloat());
 	return nObj;
 }
 
@@ -121,6 +121,29 @@ Fixed Fixed::operator-- (int){
 	tmp.setRawBits(this->getRawBits());
 	this->setRawBits(this->getRawBits() - 1);
 	return tmp;
+}
+
+Fixed& Fixed::min(Fixed &a,  Fixed &b){
+	if (a.fixedPoint > b.fixedPoint)
+		return b;
+	return a;
+}
+//static int& min(const int &a, const int &b){
+// 	if (a > b)
+// 		return b;
+// }
+Fixed& Fixed::max(Fixed &a, Fixed &b){
+	if (a.fixedPoint < b.fixedPoint)
+		return b;
+	return a;
+}
+Fixed& Fixed::max(const Fixed &a,  const Fixed &b){
+	Fixed *tmp;
+	if (a.fixedPoint < b.fixedPoint)
+		tmp = Fixed(b.toFloat());
+	else
+		tmp = Fixed(b.toFloat());
+	return *tmp;
 }
 
 Fixed::~Fixed(){
