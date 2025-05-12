@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:03 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/07 18:55:13 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/09 10:27:34 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ class Fixed{
 		static Fixed& min(Fixed &a,  Fixed &b);
 		//static int& min(const int &a, const int &b);
 		static Fixed& max(Fixed &a,  Fixed &b);
-		static Fixed& max(const Fixed &a,  const Fixed &b);
+		static const Fixed& max(const Fixed &a,  const Fixed &b);
 		~Fixed();
 } ;
 

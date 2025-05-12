@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:36 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/07 19:00:20 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/09 10:27:11 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,13 +137,10 @@ Fixed& Fixed::max(Fixed &a, Fixed &b){
 		return b;
 	return a;
 }
-Fixed& Fixed::max(const Fixed &a,  const Fixed &b){
-	Fixed *tmp;
+const Fixed& Fixed::max(const Fixed &a,  const Fixed &b){
 	if (a.fixedPoint < b.fixedPoint)
-		tmp = Fixed(b.toFloat());
-	else
-		tmp = Fixed(b.toFloat());
-	return *tmp;
+		return b;
+	return a;
 }
 
 Fixed::~Fixed(){
