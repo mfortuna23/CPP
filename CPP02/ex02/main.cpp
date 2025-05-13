@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:22:31 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/12 13:42:30 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/13 14:55:32 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main( void ) {
 	Fixed a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	// Fixed c(12.8974);
+
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;
 	std::cout << a << std::endl;
@@ -24,6 +24,17 @@ int main( void ) {
 	std::cout << b << std::endl;
 	std::cout << --a << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
-	std::cout << Fixed::min( a, b ) << std::endl;
+
+	Fixed c((float)12.8974);
+	Fixed d((int)12.8974);
+	
+	std::cout << c << std::endl;
+	std::cout << d << std::endl;
+
+	std::cout << c.toFloat() << std::endl;
+	std::cout << d.toFloat() << std::endl;
+
+	std::cout << (1 << 8) << std::endl;
+	std::cout << roundf(1.1 * (1 << 8)) << std::endl;
 	return 0;
 	}
