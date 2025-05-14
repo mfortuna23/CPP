@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:36 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/24 12:19:43 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:22:04 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Fixed& Fixed::operator= (const Fixed& fix){
 	fixedPoint = fix.fixedPoint;
 	return *this;
 }
-int	Fixed::getRawBits(){
+int	Fixed::getRawBits(void) const{
 	std::cout << magenta << "getRawBits member function called" << reset << std::endl;
 	return fixedPoint;
 }

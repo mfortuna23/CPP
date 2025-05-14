@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:22:31 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/14 14:31:19 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:45:40 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ int main( void ) {
 
 	std::cout << c.toFloat() << std::endl;
 	std::cout << d.toFloat() << std::endl;
+
+	if (c <= d)
+		std::cout << "true" << std::endl;
 
 	std::cout << (1 << 8) << std::endl;
 	std::cout << roundf(1.1 * (1 << 8)) << std::endl;

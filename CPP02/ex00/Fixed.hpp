@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:03 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/04/24 11:32:30 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:21:56 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Fixed{
 		Fixed();
 		Fixed(Fixed& t);
 		Fixed& operator= (const Fixed& fix);
-		int		getRawBits();
+		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 		~Fixed();
 } ;
