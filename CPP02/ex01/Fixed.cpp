@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:36 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/05 12:59:29 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/14 10:36:48 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	Fixed::toInt(void) const{
 	return fixedPoint >> fractionalBits;
 }
 float Fixed::toFloat(void) const{
-	return static_cast<float>(fixedPoint) / (1 << fractionalBits);;
+	return static_cast<float>(fixedPoint) / (1 << fractionalBits);
 }
 Fixed::~Fixed(){
 	std::cout << yellow << "Destructor called" << reset << std::endl;

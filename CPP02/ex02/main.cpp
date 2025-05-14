@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:22:31 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/13 14:55:32 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:31:19 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int main( void ) {
 	std::cout << --a << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
 
-	Fixed c((float)12.8974);
+	Fixed c(12.8974f);
 	Fixed d((int)12.8974);
+	Fixed e(0);
 	
 	std::cout << c << std::endl;
 	std::cout << d << std::endl;
@@ -36,5 +37,6 @@ int main( void ) {
 
 	std::cout << (1 << 8) << std::endl;
 	std::cout << roundf(1.1 * (1 << 8)) << std::endl;
+	std::cout << d * e << std::endl;
 	return 0;
 	}

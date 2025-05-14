@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:36 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/12 12:08:13 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:29:43 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ bool Fixed::operator<= (const Fixed& other) const{
 		return true;
 	return false;
 }
-//TO FLOAT
+
 const Fixed Fixed::operator+ (const Fixed& other){
 	Fixed	nObj(this->toFloat() + other.toFloat());
 	return nObj;
@@ -101,7 +101,6 @@ const Fixed Fixed::operator/ (const Fixed& other){
 		nObj = Fixed(this->toFloat() / other.toFloat());
 	return nObj;
 }
-
 Fixed Fixed::operator++ (){
 	this->setRawBits(this->getRawBits() + 1);
 	return *this;
