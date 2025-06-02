@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 15:14:23 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/27 15:48:21 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/22 10:59:05 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #define RESET "\033[0m"
 
 class ClapTrap{
-	protected:
+	private:
 		std::string name;
 		int			hitPoints;
 		int			energyPoints;

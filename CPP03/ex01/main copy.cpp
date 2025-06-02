@@ -5,23 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 14:22:31 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/02 07:21:00 by mfortuna         ###   ########.fr       */
+/*   Created: 2025/05/22 11:25:49 by mfortuna          #+#    #+#             */
+/*   Updated: 2025/05/23 11:31:57 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
 
-int main( void ) {
+int main(void){
+	ClapTrap a;
+	ClapTrap b("b");
+	ClapTrap c(b);
+	a = c;
+	a.attack("b");
+	b.attack("b");
+	c.attack("b");
 
-	Fixed a;
-	Fixed b( a );
-	Fixed c;
+	a.setName("A");
+	b.setName("B");
+	c.setName("C");
 
-	c = b;
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+	a.beRepaired(2);
+	b.beRepaired(2);
+	c.beRepaired(2);
+	
 
-	return 0;
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
 }

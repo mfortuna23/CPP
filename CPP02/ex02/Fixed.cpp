@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:36 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/14 16:23:58 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/05/23 12:14:21 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Fixed::Fixed(const float b){
 }
 Fixed::Fixed(const Fixed& t){
 	std::cout << cyan << "Copy constructor called" << reset << std::endl;
-	fixedPoint = t.getRawBits();
+	*this = t;
 }
 Fixed& Fixed::operator= (const Fixed& fix){
 	std::cout << cyan << "Copy assignment operator constructor called" << reset 
