@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 15:32:30 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/23 11:35:06 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/03 13:28:05 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ ClapTrap::ClapTrap(const ClapTrap& t){
 }
 
 ClapTrap& ClapTrap::operator= (const ClapTrap& other){
-	std::cout << CYAN << "Copy assignment operator constructor called" << RESET << std::endl;
+	std::cout << CYAN << "Copy assignment operator called" << RESET << std::endl;
 	name = other.getName();
 	hitPoints = other.getHitPoints();
 	energyPoints = other.getEnergyPoints();

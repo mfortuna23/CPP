@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 15:14:23 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/27 15:48:21 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/03 13:35:41 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ class ClapTrap{
 		void		setEnergyPoints(int n);
 		int			getAttackDamage(void) const;
 		void		setAttackDamage(int n);
-		void	attack(const std::string& target);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
+		void		attack(const std::string& target);
+		void		takeDamage(unsigned int amount);
+		void		beRepaired(unsigned int amount);
 		~ClapTrap();
 } ;
