@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:26:42 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/03 14:32:51 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:42:12 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,21 @@ ScavTrap::ScavTrap(std::string newName){
 	this->setEnergyPoints(50);
 	this->setAttackDamage(20);
 }
-/*
-ClapTrap::ClapTrap(const ClapTrap& t){
-	std::cout << CYAN << "Copy constructor called" << RESET << std::endl;
+
+ScavTrap::ScavTrap(const ScavTrap& t){
+	std::cout << CYAN << "ScavTrap: Copy constructor called" << RESET << std::endl;
 	*this = t;
 }
 
-ClapTrap& ClapTrap::operator= (const ClapTrap& other){
-	std::cout << CYAN << "Copy assignment operator called" << RESET << std::endl;
+ScavTrap& ScavTrap::operator= (const ScavTrap& other){
+	std::cout << CYAN << "ScavTrap: Copy assignment operator called" << RESET << std::endl;
 	name = other.getName();
 	hitPoints = other.getHitPoints();
 	energyPoints = other.getEnergyPoints();
 	attackDamage = other.getAttackDamage();
 	return (*this);
-} */
+}
+
+void ScavTrap::guardGate(){
+	std::cout << RED << "ScavTrap " << name << " is now in Gate keeper mode "<< RESET << std::endl;
+}

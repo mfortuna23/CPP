@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:27:01 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/03 14:28:56 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:40:27 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,8 @@ class ScavTrap: public ClapTrap{
 	public:
 		ScavTrap();
 		ScavTrap(std::string newName);
+		ScavTrap(const ScavTrap& t);
+		ScavTrap& operator= (const ScavTrap& other);
+		void guardGate();
 		~ScavTrap();
 } ;

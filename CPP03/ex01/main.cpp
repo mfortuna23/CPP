@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:25:49 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/03 14:30:34 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:41:48 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,5 @@ int main(void){
 	ScavTrap n("scav");
 	std::cout << n.getEnergyPoints() << std::endl;
 	std::cout << n.getName() << std::endl;
+	n.guardGate();
 }
