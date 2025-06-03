@@ -6,22 +6,22 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:36 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/23 12:14:21 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/03 11:05:10 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 Fixed::Fixed(){
-	std::cout <<green << "Default constructor called" << reset << std::endl;
+	std::cout << blue << "Default constructor called" << reset << std::endl;
 	fixedPoint = 0;
 }
 Fixed::Fixed(const int a){
-	std::cout << green << "Int constructor called" << reset << std::endl;
+	std::cout << cyan << "Int constructor called" << reset << std::endl;
 	fixedPoint = a << fractionalBits;
 }
 Fixed::Fixed(const float b){
-	std::cout << green << "Float constructor called" << reset << std::endl;
+	std::cout << cyan << "Float constructor called" << reset << std::endl;
 	fixedPoint = roundf(b * (1 << fractionalBits));
 }
 Fixed::Fixed(const Fixed& t){
@@ -29,10 +29,10 @@ Fixed::Fixed(const Fixed& t){
 	*this = t;
 }
 Fixed& Fixed::operator= (const Fixed& fix){
-	std::cout << cyan << "Copy assignment operator constructor called" << reset 
+	std::cout << cyan << "Copy assignment operator called" << reset 
 	<< std::endl;
 	if (this != &fix)
-		fixedPoint = fix.fixedPoint;
+		fixedPoint = fix.getRawBits();
 	return *this;
 }
 int	Fixed::getRawBits(void) const{
