@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FlagTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 08:27:01 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/04 10:45:41 by mfortuna         ###   ########.fr       */
+/*   Created: 2025/06/04 12:02:31 by mfortuna          #+#    #+#             */
+/*   Updated: 2025/06/04 12:09:33 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-class ScavTrap: public ClapTrap{
-	protected :
-		bool	gateKeeping;
-	public:
-		ScavTrap();
-		ScavTrap(std::string newName);
-		ScavTrap(const ScavTrap& t);
-		ScavTrap& operator= (const ScavTrap& other);
-		void guardGate();
-		void attack(std::string target);
-		~ScavTrap();
+class FlagTrap : public ClapTrap {
+	public :
+		FlagTrap();
+		FlagTrap(std::string newName);
+		FlagTrap(const FlagTrap& other);
+		FlagTrap &operator=(const FlagTrap& other);
+		void highFiveGuys(void);
+		~FlagTrap();
 } ;
