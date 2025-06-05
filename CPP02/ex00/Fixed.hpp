@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:03 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/05/14 16:21:56 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:52:02 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Fixed{
 		static const int	fractionalBits = 8;
 	public :
 		Fixed();
-		Fixed(Fixed& t);
+		Fixed(const Fixed& t);
 		Fixed& operator= (const Fixed& fix);
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);

@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:06:36 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/03 11:55:08 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:51:53 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Fixed::Fixed(){
 	std::cout << blue << "Default constructor called" << reset << std::endl;
 	fixedPoint = 0;
 }
-Fixed::Fixed(Fixed& t){
+Fixed::Fixed(const Fixed& t){
 	std::cout << cyan << "Copy constructor called" << reset << std::endl;
 	*this = t;
 }
