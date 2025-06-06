@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FlagTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 11:25:49 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/06 15:52:06 by mfortuna         ###   ########.fr       */
+/*   Created: 2025/06/04 12:02:31 by mfortuna          #+#    #+#             */
+/*   Updated: 2025/06/06 15:51:47 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
-int main(void){
-	ClapTrap a("CLAP");
-	ScavTrap b("SCAV");
-	FragTrap c("Frag");
-	
-	a.attack("SCAV");
-	b.takeDamage(a.getAttackDamage());
-	c.highFiveGuys();
-	b.guardGate();
-	c.attack("SCAV");
-	b.takeDamage(c.getAttackDamage());
-	b.attack("Frag");
-	c.takeDamage(b.getAttackDamage());
-}
+class FragTrap : public ClapTrap {
+	public :
+		FragTrap();
+		FragTrap(std::string newName);
+		FragTrap(const FragTrap& other);
+		FragTrap &operator=(const FragTrap& other);
+		void highFiveGuys(void);
+		~FragTrap();
+} ;

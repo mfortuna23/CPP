@@ -6,13 +6,13 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 11:02:55 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/05 13:21:48 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/06 15:51:53 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FlagTrap.hpp"
+#include "FragTrap.hpp"
 
-class DiamondTrap : public ClapTrap, public ScavTrap, public FlagTrap {
+class DiamondTrap : public ClapTrap, public ScavTrap, public FragTrap {
 	private :
 		std::string name;
 	public	:

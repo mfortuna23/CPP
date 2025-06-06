@@ -6,14 +6,14 @@
 #    By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 15:14:04 by mfortuna          #+#    #+#              #
-#    Updated: 2025/06/06 15:52:07 by mfortuna         ###   ########.fr        #
+#    Updated: 2025/06/06 14:03:48 by mfortuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= ScavTrap
+NAME	= Animal
 CPP		= c++
 CPPFLG	= -Wall -Wextra -Werror -std=c++98
-SRC		= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRC		= main.cpp Animal.cpp Cat.cpp Dog.cpp
 OBJS	= $(SRC:%.cpp=%.o)
 
 all: $(NAME)

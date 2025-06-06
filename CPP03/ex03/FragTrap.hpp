@@ -6,18 +6,18 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 12:02:31 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/05 10:48:13 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/06 15:52:03 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-class FlagTrap : public ClapTrap {
+class FragTrap : public ClapTrap {
 	public :
-		FlagTrap();
-		FlagTrap(std::string newName);
-		FlagTrap(const FlagTrap& other);
-		FlagTrap &operator=(const FlagTrap& other);
+		FragTrap();
+		FragTrap(std::string newName);
+		FragTrap(const FragTrap& other);
+		FragTrap &operator=(const FragTrap& other);
 		void highFiveGuys(void);
-		~FlagTrap();
+		~FragTrap();
 } ;
