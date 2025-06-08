@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 14:04:18 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/08 11:43:39 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/08 11:17:59 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 #include <iostream>
 #include <string>
@@ -23,16 +23,16 @@
 #define CYAN "\033[36m"
 #define RESET "\033[0m"
 
-class Animal {
+class WrongAnimal {
 	protected:
 		std::string type;
 	public:
-		Animal();
-		virtual ~Animal();
-		Animal(const std::string nType);
-		Animal(const Animal& other);
-		Animal &operator= (const Animal& other);
-		virtual void makeSound() const;
+		WrongAnimal();
+		~WrongAnimal();
+		WrongAnimal(const std::string nType);
+		WrongAnimal(const WrongAnimal& other);
+		WrongAnimal &operator= (const WrongAnimal& other);
+		void makeSound() const;
 		std::string getType(void) const;
 		void		setType(const std::string nType);
 } ;
