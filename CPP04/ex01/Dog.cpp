@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 11:15:21 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/09 15:27:59 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/07 16:35:51 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Dog::Dog() : Animal("Dog"){
 	std::cout << MAGENTA << "Dog default constructor" << RESET << std::endl;
 }
 
-Dog::Dog (const Dog& other) : Animal("Dog"){
+Dog::Dog(const Dog& other){
 	std::cout << MAGENTA << "Dog copy constructor" << RESET << std::endl;
 	*this = other;
 }

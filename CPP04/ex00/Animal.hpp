@@ -6,12 +6,13 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 14:04:18 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/08 11:43:39 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/09 15:23:16 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#define ANIMAL_HPP
+#pragma once
 
 #include <iostream>
 #include <string>

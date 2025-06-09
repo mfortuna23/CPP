@@ -6,13 +6,14 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 11:13:27 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/07 16:22:28 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/09 15:23:23 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOG_HPP
 #define DOG_HPP
-#include "Cat.hpp"
+#include "Animal.hpp"
+#pragma once
 
 class Dog : public Animal {
 	public :

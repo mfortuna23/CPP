@@ -6,13 +6,13 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:27:01 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/04 10:45:41 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/09 14:38:30 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-class ScavTrap: public ClapTrap{
+class ScavTrap: virtual public ClapTrap{
 	protected :
 		bool	gateKeeping;
 	public:

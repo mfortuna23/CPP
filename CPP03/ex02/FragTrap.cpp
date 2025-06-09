@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FlagTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 12:09:57 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/06 15:51:45 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:17:57 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ FragTrap &FragTrap::operator= (const FragTrap& other){
 }
 
 void FragTrap::highFiveGuys(void){
-	std::cout << GREEN << "FlapTrap:" << name << " requests high five" << RESET << std::endl;
+	std::cout << GREEN << "FragTrap:" << name << " requests high five" << RESET << std::endl;
 }
 
 FragTrap::~FragTrap() {

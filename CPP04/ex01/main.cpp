@@ -6,14 +6,13 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 14:04:03 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/09 15:23:17 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/09 15:35:25 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongCat.hpp"
+#include "Cat.hpp"
+#pragma once
 
 int main (void){
 	{
