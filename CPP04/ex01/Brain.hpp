@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:12:14 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/09 15:34:29 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/11 13:15:50 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,12 @@
 class Brain {
 	private :
 		std::string ideas[100];
-		int number = 0;
 	public :
 		Brain();
 		Brain(const Brain& other);
-		Brain& 		operator= (const Brain& other);
-		void 		addIdea (std::string newIdea);
-		void		printIdeas();
-		//std::string getIdeas() const;
-		void		setIdeas(std::string otherIdeas);
+		Brain& 	operator= (const Brain& other);
+		void 			addIdea (std::string newIdea);
+		void			printIdeas();
 		~Brain();
 } ;
 

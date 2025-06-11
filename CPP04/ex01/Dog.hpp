@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 11:13:27 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/09 15:34:48 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/11 10:56:54 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 #pragma once
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal {
+	private :
+		Brain *dogBrain;
 	public :
 		Dog();
 		Dog(const Dog& other);

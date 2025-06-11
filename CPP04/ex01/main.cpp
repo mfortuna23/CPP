@@ -6,13 +6,12 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 14:04:03 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/09 15:35:25 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/11 12:04:15 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include "Cat.hpp"
-#pragma once
 
 int main (void){
 	{
@@ -27,15 +26,14 @@ int main (void){
 		delete j;
 		delete i;
 		delete meta;
-	}
+	} 
 	{
-		const WrongAnimal* meta = new WrongAnimal();
-		const WrongAnimal* i = new WrongCat();
-		std::cout << i->getType() << " " << std::endl;
-		i->makeSound(); //will output the Wrong Animal sound!
-		meta->makeSound();
-		delete i;
-		delete meta;
+		Cat meow;
+		meow.addIdeas("123");
+		Cat two(meow);
+		two.addIdeas("456");
+		meow.printIdeas();
+		two.printIdeas();
 	}
 	return (0);
 }
