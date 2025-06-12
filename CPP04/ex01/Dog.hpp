@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 11:13:27 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/11 10:56:54 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/12 14:44:39 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class Dog : public Animal {
 		Dog(const Dog& other);
 		Dog& operator= (const Dog& other);
 		void makeSound() const;
+		void addIdeas(std::string newIdea);
+		void printIdeas();
 		~Dog();
 } ;
 #endif

@@ -6,18 +6,18 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 11:15:21 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/12 17:15:27 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/12 17:21:01 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal("Dog"){
+Dog::Dog() : AAnimal("Dog"){
 	std::cout << MAGENTA << "Dog default constructor" << RESET << std::endl;
 	dogBrain = new Brain;
 }
 
-Dog::Dog(const Dog& other) : Animal("Dog"){
+Dog::Dog(const Dog& other) : AAnimal("Dog"){
 	std::cout << MAGENTA << "Dog copy constructor" << RESET << std::endl;
 	dogBrain = new Brain;
 	*this = other;

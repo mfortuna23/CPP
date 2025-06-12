@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/07 10:39:40 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/12 14:44:18 by mfortuna         ###   ########.fr       */
+/*   Created: 2025/06/07 11:13:27 by mfortuna          #+#    #+#             */
+/*   Updated: 2025/06/12 17:21:03 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
-#include "Animal.hpp"
-#include "Brain.hpp"
+#ifndef DOG_HPP
+#define DOG_HPP
 #pragma once
 
-class Cat : public Animal {
+#include "AAnimal.hpp"
+#include "Brain.hpp"
+
+class Dog : public AAnimal {
 	private :
-		Brain *catBrain;
+		Brain *dogBrain;
 	public :
-		Cat();
-		Cat(const Cat& other);
-		Cat& operator= (const Cat& other);
+		Dog();
+		Dog(const Dog& other);
+		Dog& operator= (const Dog& other);
 		void makeSound() const;
 		void addIdeas(std::string newIdea);
 		void printIdeas();
-		~Cat();
+		~Dog();
 } ;
-
 #endif
