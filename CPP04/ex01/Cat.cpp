@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 10:54:21 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/11 13:41:34 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/12 10:50:16 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Cat::Cat() : Animal("Cat"){
 	std::cout << YELLOW << "Cat default constructor" << RESET << std::endl;
-	catBrian = new Brain;
+	catBrain = new Brain;
 }
 
 Cat::Cat(const Cat& other) : Animal("Cat"){
@@ -24,9 +24,9 @@ Cat::Cat(const Cat& other) : Animal("Cat"){
 
 Cat& Cat::operator= (const Cat& other){
 	std::cout << YELLOW << "Cat copy assignment operator called" << RESET << std::endl;
-	if (!catBrian){
-		catBrian = new Brain(&other.catBrian);
-		}
+	Brain *tmp = catBrain;
+	delete tmp;
+	catBrain = new Brain(*other.catBrain);
 	type = other.getType();
 	return *this;
 }
@@ -36,14 +36,14 @@ void Cat::makeSound() const{
 }
 
 void Cat::addIdeas(std::string newIdeas){
-	catBrian->addIdea(newIdeas);
+	catBrain->addIdea(newIdeas);
 }
 
 void Cat::printIdeas(){
-	catBrian->printIdeas();
+	catBrain->printIdeas();
 }
 
 Cat::~Cat(){
 	std::cout << YELLOW << "Cat default destructor" << RESET << std::endl;
-	delete catBrian;
+	delete catBrain;
 }

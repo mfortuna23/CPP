@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 10:39:40 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/11 13:07:22 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/12 10:46:23 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class Cat : public Animal {
 	private :
-		Brain *catBrian;
+		Brain *catBrain;
 	public :
 		Cat();
 		Cat(const Cat& other);
