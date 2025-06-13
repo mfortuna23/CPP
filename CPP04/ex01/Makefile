@@ -6,11 +6,11 @@
 #    By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 15:14:04 by mfortuna          #+#    #+#              #
-#    Updated: 2025/06/11 11:45:44 by mfortuna         ###   ########.fr        #
+#    Updated: 2025/06/13 11:05:32 by mfortuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= Animal
+NAME	= brain
 CPP		= c++
 CPPFLG	= -Wall -Wextra -Werror -std=c++98
 SRC		= main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
