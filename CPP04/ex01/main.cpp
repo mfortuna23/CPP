@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 14:04:03 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/06/12 15:57:32 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/06/13 10:51:43 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,16 @@ int main (void){
 		delete meow;
 		two->printIdeas();
 		delete two;		
+	}
+
+	{
+		Dog basic;
+		{
+		Dog tmp;
+		basic = tmp;
+		tmp.printIdeas();
+		}
+		basic.printIdeas();
 	}
 	return (0);
 }
