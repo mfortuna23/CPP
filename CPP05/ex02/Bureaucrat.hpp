@@ -4,7 +4,8 @@
 
 # include <string>
 # include <iostream>
-# include "Form.hpp"
+# include <fstream>
+# include "AForm.hpp"
 
 # define BLUE "\033[34m"
 # define RED "\033[31m"
@@ -14,7 +15,7 @@
 # define CYAN "\033[36m"
 # define RESET "\033[0m"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 	private:
@@ -29,7 +30,8 @@ class Bureaucrat {
 		Bureaucrat &operator--();
 		std::string getName() const;
 		int getGrade() const;
-		void signForm(Form &other);
+		void signAForm(AForm &other);
+		void executeForm(AForm const & form);
 		~Bureaucrat();
 
 		class GradeTooHighException : public std::exception {

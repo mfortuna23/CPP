@@ -6,12 +6,11 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 10:50:31 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/03 15:20:14 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/09/08 14:48:47 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-
 
 Bureaucrat::Bureaucrat(){
 	name = "Default Bureaucrat";
@@ -25,7 +24,6 @@ Bureaucrat::Bureaucrat(const std::string &nName, int nGrade){
 	this->name = nName;
 	this->grade = nGrade;
 }
-
 Bureaucrat::Bureaucrat(const Bureaucrat &other){
 	*this = other;
 }
@@ -57,8 +55,13 @@ const char* Bureaucrat::GradeTooLowException::what() const throw(){
 	return "Grade too low";
 }
 
-void Bureaucrat::signForm(Form &other){
+void Bureaucrat::signAForm(AForm &other){
 	other.beSigned(*this);
+}
+
+void Bureaucrat::executeForm(AForm const & form){
+	form.execute(*this);
+	std::cout << name << " executed " << form.getName() << std::endl;
 }
 
 Bureaucrat::~Bureaucrat(){}

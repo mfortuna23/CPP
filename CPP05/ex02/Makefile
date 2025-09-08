@@ -6,14 +6,15 @@
 #    By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/30 09:47:59 by mfortuna          #+#    #+#              #
-#    Updated: 2025/07/01 15:55:30 by mfortuna         ###   ########.fr        #
+#    Updated: 2025/09/08 14:57:37 by mfortuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= form
+NAME	= AForm
 CPP		= c++
 CPPFLG	= -Wall -Wextra -Werror -std=c++98
-SRC		= main.cpp Bureaucrat.cpp Form.cpp
+SRC		= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp \
+			PresidentialPardonForm.cpp
 OBJS	= $(SRC:%.cpp=%.o)
 
 all: $(NAME)

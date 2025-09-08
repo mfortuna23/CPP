@@ -1,49 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:23:33 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/03 15:15:19 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/09/08 11:27:13 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form(){}
-Form::Form(std::string nName, int sign, int exec){
+AForm::AForm(){}
+AForm::AForm(std::string nName, int sign, int exec){
 	name = nName;
 	isSigned = false;
 	reqSign = sign;
 	reqExec = exec;
 }
-Form::Form(const Form &other){
+AForm::AForm(const AForm &other){
 	*this = other;
 }
-Form &Form::operator= (const Form &other){
+AForm &AForm::operator= (const AForm &other){
 	name = other.getName();
 	isSigned = other.getIsSigned();
 	reqSign = other.getReqSign();
 	reqExec = other.getReqExec();
 	return *this;
 }
-std::string Form::getName() const {return name;}
-bool 		Form::getIsSigned() const {return isSigned;}
-int			Form::getReqSign() const {return reqSign;}
-int			Form::getReqExec() const {return reqExec;}
-void		Form::setName(std::string other){name = other;}
-void		Form::setIsSigned(bool other){isSigned = other;}
-void		Form::setReqSign(int other){reqSign = other;}
-void		Form::setReqExec(int other){reqExec = other;}
-const char* Form::GradeTooLowException::what() const throw(){
+std::string AForm::getName() const {return name;}
+bool 		AForm::getIsSigned() const {return isSigned;}
+int			AForm::getReqSign() const {return reqSign;}
+int			AForm::getReqExec() const {return reqExec;}
+void		AForm::setName(std::string other){name = other;}
+void		AForm::setIsSigned(bool other){isSigned = other;}
+void		AForm::setReqSign(int other){reqSign = other;}
+void		AForm::setReqExec(int other){reqExec = other;}
+const char* AForm::GradeTooLowException::what() const throw(){
 	return "Grade too low";
 }
-const char* Form::GradeTooHighException::what() const throw(){
+const char* AForm::GradeTooHighException::what() const throw(){
 	return "Grade too high";
 }
-void		Form::beSigned(const Bureaucrat &other) {
+
+const char* AForm::FormNotSignedException::what() const throw(){
+	return "Sign the form before execution";
+}
+
+void		AForm::beSigned(const Bureaucrat &other) {
 	if (other.getGrade() > reqSign){
 		std::cout << other.getName() << " couldn’t sign " << name << " because ";
 		throw GradeTooLowException();
@@ -52,10 +57,10 @@ void		Form::beSigned(const Bureaucrat &other) {
 	isSigned = true;
 }
 
-Form::~Form(){}
+AForm::~AForm(){}
 
-std::ostream &operator<<(std::ostream &out, const Form &other){
-	out << "Form: " << other.getName();
+std::ostream &operator<<(std::ostream &out, const AForm &other){
+	out << "AForm: " << other.getName();
 	if (other.getIsSigned())
 		out << " is signed ";
 	else
