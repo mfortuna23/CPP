@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 17:22:34 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/10 18:27:46 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/09/11 23:50:32 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,34 +20,90 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other){(void)
 
 ScalarConverter::~ScalarConverter(){}
 
+bool isItPrint(std::string str){
+	for (size_t i = 0; i < str.length(); i++){
+		if (!std::isprint(str[i]))
+			return false;
+	}
+	return true;
+}
+
 int checkForType(std::string str){
-	if (str.length() == 1 )
+	if (!isItPrint(str))
+		return 4;
+	if (str.length() == 1 && !std::isdigit(str[0]))
 		return 0;
+	if (str == "nan" || str == "-inf" || str == "+inf")
+		return 3;
+	if (str == "nanf" || str == "-inff" || str == "+inff")
+		return 2;
+	size_t i = 0, points = 0;
+	while (i < str.length()){
+		if (!std::isdigit(str[i])){ //TODO ver o "f" no meio da string
+			if (str[i] == '.')
+				points++;
+			if (str[i] == 'f' && i == (str.length() - 1))
+				return 2;
+			if (str[i] != '-' && str[i] != '.' && str[i] != 'f')
+				return 4;
+		}
+		i++;
+	}
+	if (points == 0 && std::atol(str.c_str()) <= INT32_MAX && std::atol(str.c_str()) >= INT32_MIN)
+		return 1;
+	if (points == 1)
+		return 3;
+	return 4;
 }
-void printChar(std::string c){
-	(void)c;
+void printChar(char c){
+	int i = static_cast<int>(c);
+	std::cout << "char: " << c << std::endl;
+	std::cout << "int: " << i << std::endl;
+	std::cout << "float: " << i << ".0f" << std::endl;
+	std::cout << "double: " << i << ".0" << std::endl;
 }
-void printInt(std::string i){
-	(void)i;
+void printInt(int i){
+	std::cout << "char: ";
+	if (std::isprint(static_cast<char>(i)))
+		std::cout << static_cast<char>(i) << std::endl;
+	else if(i >= 0 && i < 128) // if ascii
+		std::cout << "Non displayable" << std::endl;
+	else
+		std::cout << "impossible" << std::endl;
+	std::cout << "int: " << i << std::endl;
+	std::cout << "float: " << i << ".0f" << std::endl;
+	std::cout << "double: " << i << ".0" << std::endl;
 }
-void printFloat(std::string f){
-	(void)f;
+void printFloat(float f){
+	std::cout << "char: ";
+	if (std::isprint(static_cast<char>(f)))
+		std::cout << static_cast<char>(f) << std::endl;
+	else if(f >= 0 && f < 128) // if ascii
+		std::cout << "Non displayable" << std::endl;
+	else
+		std::cout << "impossible" << std::endl;
+	if ((f <= INT32_MAX && f >= INT32_MIN))
+		std::cout << "int: " << static_cast<int>(f) << std::endl;
+	else
+		std::cout << "int: " << "impossible" << std::endl;
+	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << f << std::endl;
 }
-void printDouble(std::string d){
+void printDouble(double d){
 	(void)d;
 }
 
 void ScalarConverter::covert(std::string str){
 	switch (checkForType(str)){
 		case 0 :
-			printChar(str); break ;
+			printChar(str[0]); break ;
 		case 1 :
-			printChar(str);	break ;
+			printInt(std::atoi(str.c_str()));	break ;
 		case 2 :
-			printChar(str);	break ;
+			printFloat(std::atof(str.c_str()));	break ;
 		case 3 :
-			printChar(str); break ;
+			printDouble(std::atof(str.c_str())); break ;
 		default :
-			std::cout << RED << "undifined" << RESET << std::endl;
+			std::cout << RED << "invalid input" << RESET << std::endl;
 	}
 }

@@ -6,14 +6,14 @@
 #    By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/30 09:47:59 by mfortuna          #+#    #+#              #
-#    Updated: 2025/09/10 17:10:17 by mfortuna         ###   ########.fr        #
+#    Updated: 2025/09/11 20:36:47 by mfortuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= scalar_types
 CPP		= c++
 CPPFLG	= -Wall -Wextra -Werror -std=c++98
-SRC		= main.cpp 
+SRC		= main.cpp ScalarConverter.cpp
 OBJS	= $(SRC:%.cpp=%.o)
 
 all: $(NAME)

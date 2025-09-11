@@ -6,10 +6,13 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 10:26:35 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/09 14:16:42 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/09/11 22:56:42 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+#ifndef INTERN_HPP
+#define INTERN_HPP
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -31,3 +34,5 @@ class Intern {
 		AForm *makePresidential(std::string target);
 		~Intern();
 } ;
+
+#endif
