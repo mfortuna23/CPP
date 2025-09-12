@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:41:16 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/03 15:14:16 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/09/12 13:35:57 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ class Bureaucrat;
 
 class Form {
 	private :
-		std::string	name;
-		bool		isSigned;
-		int			reqSign;
-		int			reqExec;
+		const std::string	name;
+		bool				isSigned;
+		const int			reqSign;
+		const int			reqExec;
 	public :
 		Form();
 		Form(std::string nName, int sign, int exec);
@@ -33,10 +33,6 @@ class Form {
 		bool 		getIsSigned() const;
 		int			getReqSign() const;
 		int			getReqExec() const;
-		void		setName(std::string other);
-		void		setIsSigned(bool other);
-		void		setReqSign(int other);
-		void		setReqExec(int other);
 		void		beSigned(const Bureaucrat &other);
 		class GradeTooLowException : public std::exception {
 			public:

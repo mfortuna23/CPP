@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 17:12:33 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/10 18:00:25 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/09/12 10:41:11 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define SCALARCONVERTER_HPP
 #include <iostream>
 #include <string>
+#include <climits>
+#include <cstdlib>
 
 # define BLUE "\033[34m"
 # define RED "\033[31m"

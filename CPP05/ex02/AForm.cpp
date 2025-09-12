@@ -12,31 +12,28 @@
 
 #include "AForm.hpp"
 
-AForm::AForm(){}
-AForm::AForm(std::string nName, int sign, int exec){
-	name = nName;
+AForm::AForm(): name("Default Aform"), reqSign(1), reqExec(1){
 	isSigned = false;
-	reqSign = sign;
-	reqExec = exec;
 }
-AForm::AForm(const AForm &other){
-	*this = other;
+AForm::AForm(std::string nName, int sign, int exec) : name(nName), reqSign(sign), reqExec(exec){
+	if (reqExec < 1 || reqSign < 1)
+		throw GradeTooHighException();
+	if (reqExec > 150 || reqSign > 150)
+		throw GradeTooLowException();
+	isSigned = false;
+}
+AForm::AForm(const AForm &other) : name(other.getName()), reqSign(other.getReqSign()), reqExec(other.getReqExec()){
+	isSigned = other.getIsSigned();
 }
 AForm &AForm::operator= (const AForm &other){
-	name = other.getName();
 	isSigned = other.getIsSigned();
-	reqSign = other.getReqSign();
-	reqExec = other.getReqExec();
 	return *this;
 }
 std::string AForm::getName() const {return name;}
 bool 		AForm::getIsSigned() const {return isSigned;}
 int			AForm::getReqSign() const {return reqSign;}
 int			AForm::getReqExec() const {return reqExec;}
-void		AForm::setName(std::string other){name = other;}
 void		AForm::setIsSigned(bool other){isSigned = other;}
-void		AForm::setReqSign(int other){reqSign = other;}
-void		AForm::setReqExec(int other){reqExec = other;}
 const char* AForm::GradeTooLowException::what() const throw(){
 	return "Grade too low";
 }

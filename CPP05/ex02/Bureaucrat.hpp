@@ -19,7 +19,7 @@ class AForm;
 
 class Bureaucrat {
 	private:
-		std::string name;
+		const std::string name;
 		int grade;
 	public:
 		Bureaucrat();
@@ -30,8 +30,7 @@ class Bureaucrat {
 		Bureaucrat &operator--();
 		std::string getName() const;
 		int getGrade() const;
-		void signAForm(AForm &other);
-		void executeForm(AForm const & form);
+		void signForm(AForm &other);
 		~Bureaucrat();
 
 		class GradeTooHighException : public std::exception {

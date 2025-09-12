@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 17:22:34 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/11 23:50:32 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/09/12 10:44:23 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int checkForType(std::string str){
 		}
 		i++;
 	}
-	if (points == 0 && std::atol(str.c_str()) <= INT32_MAX && std::atol(str.c_str()) >= INT32_MIN)
+	if (points == 0 && std::atol(str.c_str()) <= INT_MAX && std::atol(str.c_str()) >= INT_MIN)
 		return 1;
 	if (points == 1)
 		return 3;
@@ -82,15 +82,12 @@ void printFloat(float f){
 		std::cout << "Non displayable" << std::endl;
 	else
 		std::cout << "impossible" << std::endl;
-	if ((f <= INT32_MAX && f >= INT32_MIN))
+	if ((f <= INT_MAX && f >= INT_MIN))
 		std::cout << "int: " << static_cast<int>(f) << std::endl;
 	else
 		std::cout << "int: " << "impossible" << std::endl;
 	std::cout << "float: " << f << "f" << std::endl;
 	std::cout << "double: " << f << std::endl;
-}
-void printDouble(double d){
-	(void)d;
 }
 
 void ScalarConverter::covert(std::string str){
@@ -102,7 +99,7 @@ void ScalarConverter::covert(std::string str){
 		case 2 :
 			printFloat(std::atof(str.c_str()));	break ;
 		case 3 :
-			printDouble(std::atof(str.c_str())); break ;
+			printFloat(std::atof(str.c_str())); break ;
 		default :
 			std::cout << RED << "invalid input" << RESET << std::endl;
 	}
