@@ -6,11 +6,13 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 17:22:34 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/15 10:06:41 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/09/16 15:02:03 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include <iomanip>
+#include <cmath>
 
 ScalarConverter::ScalarConverter(){}
 
@@ -39,7 +41,7 @@ int checkForType(std::string str){
 		return 2;
 	size_t i = 0, points = 0;
 	while (i < str.length()){
-		if (!std::isdigit(str[i])){ //TODO ver o "f" no meio da string
+		if (!std::isdigit(str[i])){
 			if (str[i] == '.')
 				points++;
 			if (str[i] == 'f' && i == (str.length() - 1))
@@ -76,6 +78,14 @@ void printInt(int i){
 	std::cout << "float: " << i << ".0f" << std::endl;
 	std::cout << "double: " << i << ".0" << std::endl;
 }
+
+void printDouble(float value) {
+	if (value == std::floor(value))
+		std::cout << std::fixed << std::setprecision(1) << value;
+	else
+		std::cout << value;
+}
+
 void printFloat(float f){
 	std::cout << "char: ";
 	if (std::isprint(static_cast<char>(f)))
@@ -84,12 +94,16 @@ void printFloat(float f){
 		std::cout << "Non displayable" << std::endl;
 	else
 		std::cout << "impossible" << std::endl;
-	if ((f <= INT_MAX && f >= INT_MIN))
+	if ((static_cast<long>(f) <= INT_MAX && static_cast<long>(f) >= INT_MIN))
 		std::cout << "int: " << static_cast<int>(f) << std::endl;
 	else
 		std::cout << "int: " << "impossible" << std::endl;
-	std::cout << "float: " << f << "f" << std::endl;
-	std::cout << "double: " << f << std::endl;
+	std::cout << "float: ";
+	printDouble(f);
+	std::cout << "f" <<std::endl;
+	std::cout << "double: ";
+	printDouble(f);
+	std::cout << std::endl;
 }
 
 void ScalarConverter::covert(std::string str){
@@ -97,7 +111,7 @@ void ScalarConverter::covert(std::string str){
 		case 0 :
 			printChar(str[0]); break ;
 		case 1 :
-			printInt(std::atoi(str.c_str()));	break ;
+			printInt(std::atoi(str.c_str())); break ;
 		case 2 :
 			printFloat(std::atof(str.c_str()));	break ;
 		case 3 :

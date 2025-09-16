@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/06/30 09:47:59 by mfortuna          #+#    #+#              #
-#    Updated: 2025/09/16 14:37:09 by mfortuna         ###   ########.fr        #
+#    Created: 2025/09/16 12:10:49 by mfortuna          #+#    #+#              #
+#    Updated: 2025/09/16 15:24:56 by mfortuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= convert
+NAME	= iter
 CPP		= c++
 CPPFLG	= -Wall -Wextra -Werror -std=c++98
-SRC		= main.cpp ScalarConverter.cpp
+SRC		= main.cpp 
 OBJS	= $(SRC:%.cpp=%.o)
 
 all: $(NAME)
@@ -31,4 +31,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
