@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 17:12:33 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/12 10:41:11 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/09/15 10:40:13 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,6 @@ class ScalarConverter {
 		void static covert(std::string str);
 } ;
 
+
+//The static_cast can be used to convert between related types, such as numeric types or pointers in the same inheritance hierarchy.//
 #endif

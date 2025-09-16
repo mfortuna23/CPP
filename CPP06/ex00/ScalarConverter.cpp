@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 17:22:34 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/12 10:44:23 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/09/15 10:06:41 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ int checkForType(std::string str){
 		}
 		i++;
 	}
-	if (points == 0 && std::atol(str.c_str()) <= INT_MAX && std::atol(str.c_str()) >= INT_MIN)
+	if (std::atol(str.c_str()) > INT_MAX || std::atol(str.c_str()) < INT_MIN)
+		return 4 ;
+	if (points == 0)
 		return 1;
 	if (points == 1)
 		return 3;
