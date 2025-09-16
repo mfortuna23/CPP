@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 10:50:31 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/12 13:55:47 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/09/16 10:33:55 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ const char* Bureaucrat::GradeTooLowException::what() const throw(){
 
 void Bureaucrat::signForm(AForm &other){
 	other.beSigned(*this);
+}
+
+void Bureaucrat::executeForm(AForm const & form){
+	form.execute(*this);
+	std::cout << name << " executed " << form.getName() << std::endl;
 }
 
 Bureaucrat::~Bureaucrat(){}

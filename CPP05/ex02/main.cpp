@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 11:16:53 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/09 10:17:04 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/09/16 10:33:48 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int main (void){
 		PresidentialPardonForm c("Bob");
 		std::cout << bob << std::endl;
 		std::cout << bob2 << std::endl;
-		bob.signAForm(a);
+		bob.signForm(a);
 		std::cout << a << std::endl;
 		std::cout << b << std::endl;
 		std::cout << c << std::endl;
 		bob2.executeForm(a);
-		bob.signAForm(b);
+		bob.signForm(b);
 		bob2.executeForm(b);
-		bob.signAForm(c);
+		bob.signForm(c);
 		bob2.executeForm(c);
 		
 	}
