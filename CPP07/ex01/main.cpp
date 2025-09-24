@@ -17,6 +17,8 @@ void down(int &i){
 	i--;
 }
 
+
+
 int main(void){
 	char a[] = "abcdefghijklmnop";
 	int	i[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -58,4 +60,5 @@ int main(void){
 			std::cout << i[x] << std::endl; break;}
 		std::cout << i[x] << ", ";
 	}
+
 }
