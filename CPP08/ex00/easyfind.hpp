@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 12:21:47 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/26 08:52:42 by mfortuna         ###   ########.fr       */
+/*   Created: 2025/09/26 14:59:10 by mfortuna          #+#    #+#             */
+/*   Updated: 2025/09/26 15:04:19 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
-#include <iostream>
+#ifndef EASYFIND_HPP
+#define EASYFIND_HPP
 
-template <class T, class Fnc> void iter(T &arr, size_t size, Fnc f){
-	for (size_t i = 0; i < size; i++)
-		f(arr[i]);
+template<class T> int easyfind(T container, int value){
+	for(int i = 0; container[i]; i++ )
+		if(container[i] == value)
+			return i;
+	return -1;
 }
-
 
 #endif

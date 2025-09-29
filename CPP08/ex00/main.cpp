@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 12:21:47 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/26 08:52:42 by mfortuna         ###   ########.fr       */
+/*   Created: 2025/09/26 15:04:33 by mfortuna          #+#    #+#             */
+/*   Updated: 2025/09/26 15:08:53 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
 #include <iostream>
+#include <vector>
+#include "easyfind.hpp"
 
-template <class T, class Fnc> void iter(T &arr, size_t size, Fnc f){
-	for (size_t i = 0; i < size; i++)
-		f(arr[i]);
+int main (){
+	std::vector<int> vec;
+	vec.push_back(-1);
+	vec.push_back(143);
+	vec.push_back(21);
+	vec.push_back(13);
+	vec.push_back(541);
+	vec.push_back(12);
+	vec.push_back(4);
+	vec.push_back(2);
+	vec.push_back(5);
+	vec.push_back(2394);
+	vec.push_back(1);
+	if (::easyfind(vec, 3) > -1)
+		std::cout << "found!"<< std::endl;
+	std::cout << "not found"<< std::endl;
 }
-
-
-#endif
