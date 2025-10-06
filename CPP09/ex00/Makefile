@@ -6,11 +6,11 @@
 #    By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/16 12:10:49 by mfortuna          #+#    #+#              #
-#    Updated: 2025/10/06 13:43:34 by mfortuna         ###   ########.fr        #
+#    Updated: 2025/10/06 15:08:37 by mfortuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= MutantStack
+NAME	= btc
 CPP		= c++
 CPPFLG	= -Wall -Wextra -Werror -std=c++98
 SRC		= main.cpp
