@@ -1,6 +1,5 @@
 #include "Span.hpp"
 
-
 Span::Span(){
 	size = 0;
 }
@@ -28,13 +27,20 @@ void Span::addNumber(unsigned int n, unsigned int *numbers){
 int Span::shortestSpan(){
 	if (arr.size() < 2)
 		throw noSpanFound() ;
-	return *std::min_element(arr.begin(), arr.end());
+	std::vector<int> tmp = arr;
+	std::sort(tmp.begin(), tmp.end());
+	int min = tmp[1] - tmp[0];
+	for (size_t i = 2; i < tmp.size(); i++){
+		if ((tmp[i] - tmp[i - 1]) < min)
+			min = tmp[i] - tmp[i - 1];
+	}
+	return min;
 
 }
 int Span::longestSpan(){
 	if (arr.size() < 2)
 		throw noSpanFound() ;
-	return *std::max_element(arr.begin(), arr.end());
+	return *std::max_element(arr.begin(), arr.end()) - *std::min_element(arr.begin(), arr.end());
 }
 
 const char* Span::noSpanFound::what() const throw(){

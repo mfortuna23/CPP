@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:25:13 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/09/30 17:09:03 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/10/08 14:14:06 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <iostream>
 
 int main(void){
-	try {	
+	try {
 		Span a(10);
-		unsigned int num[] = {1, 2, 3, 4};
+		unsigned int num[] = {1, 8, 66, 10423};
 		a.addNumber(4, num);
 		a.addNumber(98237402);
 		//Span b(1);

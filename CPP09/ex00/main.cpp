@@ -6,22 +6,21 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:59:52 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/10/06 15:15:40 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/10/08 14:57:25 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-#include <iostream>
-#include <fstream>
-#include <ctime>
 
 int main(int ac, char **av){
-	if (ac != 2)
+	if (ac != 3)
 		return 1;
-	std::ifstream file(av[1]);
-	if (!file)
+	std::ifstream data(av[1]);
+	std::ifstream wallet(av[2]);
+	if (!data || !wallet)
 		return 1;
 		
-	file.close();
+	data.close();
+	
 	return 0;
 }
