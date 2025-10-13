@@ -6,14 +6,14 @@
 #    By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/16 12:10:49 by mfortuna          #+#    #+#              #
-#    Updated: 2025/10/06 15:08:37 by mfortuna         ###   ########.fr        #
+#    Updated: 2025/10/13 13:22:04 by mfortuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= btc
 CPP		= c++
 CPPFLG	= -Wall -Wextra -Werror -std=c++98
-SRC		= main.cpp
+SRC		= main.cpp BitcoinExchange.cpp
 OBJS	= $(SRC:%.cpp=%.o)
 
 all: $(NAME)
