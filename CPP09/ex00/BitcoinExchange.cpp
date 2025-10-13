@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 13:11:06 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/10/13 13:23:30 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:29:19 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,12 @@ BitcoinExchange::BitcoinExchange(std::ifstream *file){
 	std::string buffer;
 	getline(*file, buffer); //first line does nothing
 	while(getline(*file, buffer)){
+		if (buffer.size() == 0)
+			continue ;
 		data storage;
 		storage.year = -1; storage.month = -1; storage.day = -1; storage.value = -1;
 		std::string date = buffer.substr(0, 10);
-		unsigned int pos = buffer.find('|');
-		if (pos == std::string::npos)
-			sscanf(buffer.c_str(), "%d-%d-%d,%f", &storage.year, &storage.month, &storage.day, &storage.value);
-		else
-			sscanf(buffer.c_str(), "%d-%d-%d | %f", &storage.year, &storage.month, &storage.day, &storage.value);
-		// std::istringstream iss(buffer);
-		// getline(iss, buffer, ',');
-		// storage.year = std::atoi(buffer.c_str());
-		// getline(iss, buffer, ',');
-		// storage.month = std::atoi(buffer.c_str());
-		// getline(iss, buffer, ',');
-		// storage.day = std::atoi(buffer.c_str());
-		// getline(iss, buffer); //gets the rest
-		// for (int i = 0; buffer[i]; i++){
-		// 	if (buffer[i] >= '0' && buffer[i] <= '0')
-		// 		storage.value = std::atof(buffer.c_str() + i);
+		sscanf(buffer.c_str(), "%d-%d-%d,%f", &storage.year, &storage.month, &storage.day, &storage.value);
 		btc.insert(std::make_pair(date, storage));
 	}
 }
@@ -72,36 +59,42 @@ int checkValues(const data *storage){
 	return 42;
 }
 
-void BitcoinExchange::printExchange(const BitcoinExchange &wallet){
-	std::map<std::string, data>::const_iterator it = wallet.btc.begin();
-	while(it != wallet.btc.end()){
+void BitcoinExchange::printExchange(std::ifstream *wallet){
+	std::string buffer;
+	getline(*wallet, buffer); //first line does nothing
+	while(getline(*wallet, buffer)){
+		if (buffer.size() == 0)
+			continue ;
+		data storage;
+		storage.year = -1; storage.month = -1; storage.day = -1; storage.value = -1;
+		std::string date = buffer.substr(0, 10);
+		sscanf(buffer.c_str(), "%d-%d-%d | %f", &storage.year, &storage.month, &storage.day, &storage.value);
 		try {
-			int i = checkValues(&it->second);
+			int i = checkValues(&storage);
 			switch (i){
 				case 0:
-					throw WrongDate(it->first.c_str());
+					throw WrongDate(date);
 				case 1:
 					throw NegativeValue();
 				case 2:
 					throw LargeValue();
+				default :
+					std::map<std::string, data>::iterator btcIt = btc.end();
+					btcIt--;
+					while (btcIt->first > date)
+						btcIt--;
+					std::cout << date << " => " << storage.value << " = "<< btcIt->second.value * storage.value << std::endl;
 			}
-			std::map<std::string, data>::iterator btcIt = btc.end();
-			btcIt--;
-			while (btcIt->first > it->first)
-				btcIt--;
-			std::cout << it->first << " => " << btcIt->second.value * it->second.value << std::endl;
-		} catch (std::exception &e){
+		} 
+		catch (std::exception &e){
 			std::cout << e.what() << std::endl;
 		}
-		it++;
 	}
 	
 }
-BitcoinExchange::WrongDate::WrongDate(const char* msg) : message(msg) {}
+BitcoinExchange::WrongDate::WrongDate(std::string msg) : message("Error: bad input => " + msg) {}
 const char *BitcoinExchange::WrongDate::what() const throw(){
-	std::string total = "Error: bad input => ";
-	total += message;
-	return total.c_str();
+	return message.c_str();
 }
 BitcoinExchange::WrongDate::~WrongDate() throw() {}
 

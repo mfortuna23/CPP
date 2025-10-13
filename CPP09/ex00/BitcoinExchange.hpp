@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:54:29 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/10/13 13:21:30 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:12:44 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ class BitcoinExchange {
 		BitcoinExchange(std::ifstream *file);
 		BitcoinExchange(const BitcoinExchange &other);
 		BitcoinExchange &operator=(const BitcoinExchange &other);
-		void printExchange(const BitcoinExchange &wallet);
+		void printExchange(std::ifstream *wallet);
 		class WrongDate : public std::exception {
 			public :
-				WrongDate(const char* msg);
+				WrongDate(std::string msg);
 				std::string message;
 				virtual const char *what() const throw();
 				~WrongDate() throw();
