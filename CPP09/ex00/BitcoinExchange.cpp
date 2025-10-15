@@ -6,14 +6,13 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 13:11:06 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/10/13 15:29:19 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/10/15 11:07:27 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange(){}
-
 
 BitcoinExchange::BitcoinExchange(std::ifstream *file){
 	// read file, storage no error handle
