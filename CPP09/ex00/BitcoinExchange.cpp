@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 13:11:06 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/10/15 11:07:27 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:46:31 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other){
 }
 
 int checkValues(const data *storage){
-	if (storage->year > 2025 || storage->year < 1970)
+	if (storage->year > 2025 || storage->year < 2008) // bitcoin exists since 2008
 		return 0;
 	if (storage->month < 0 || storage->month > 12)
 		return 0;
@@ -82,7 +82,10 @@ void BitcoinExchange::printExchange(std::ifstream *wallet){
 					btcIt--;
 					while (btcIt->first > date)
 						btcIt--;
-					std::cout << date << " => " << storage.value << " = "<< btcIt->second.value * storage.value << std::endl;
+					if (btcIt == btc.begin())
+						std::cout << date << " => " << storage.value << " = "<< 0 << std::endl;
+					else
+						std::cout << date << " => " << storage.value << " = "<< btcIt->second.value * storage.value << std::endl;
 			}
 		} 
 		catch (std::exception &e){
