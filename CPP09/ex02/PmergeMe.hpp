@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 11:06:26 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/11/03 14:57:00 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/11/03 17:21:24 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ class PmergeMe {
 		bool undopairsVect(void);
 		bool undopairsDeque(void);
 	public :
-		std::vector<std::vector<long> > vect;
-		std::deque<std::deque<long> > deque;
-		long odd;
+		std::vector<std::vector<int> > vect;
+		std::deque<std::deque<int> > deque;
+		int odd;
 		PmergeMe();
-		PmergeMe(std::vector<long> a);
-		PmergeMe(std::deque<long> a);
+		PmergeMe(std::vector<int> a);
+		PmergeMe(std::deque<int> a);
 		PmergeMe(const PmergeMe &other);
 		PmergeMe &operator=(const PmergeMe &other);
 		~PmergeMe();

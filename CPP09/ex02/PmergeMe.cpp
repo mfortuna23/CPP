@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:58:26 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/11/03 15:04:22 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/11/03 17:21:24 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ void PmergeMe::print(void){
 	std::cout << std::endl;
 }
 
-PmergeMe::PmergeMe(std::vector<long> a){
+PmergeMe::PmergeMe(std::vector<int> a){
 	odd = -1;
 	vect.push_back(a);
 }
 
-PmergeMe::PmergeMe(std::deque<long> a){
+PmergeMe::PmergeMe(std::deque<int> a){
 	odd = -1;
 	deque.push_back(a);
 }
@@ -87,7 +87,7 @@ void PmergeMe::insertVect(char **av){
 			if (av[i][j] < '0' || av[i][j] > '9')
 				throw NotANumber(); 
 		}
-		std::vector<long> ins;
+		std::vector<int> ins;
 		ins.push_back(std::atol(av[i]));
 		if (find(vect.begin(), vect.end(), ins) == vect.end())
 			vect.push_back(ins);
@@ -103,7 +103,7 @@ void PmergeMe::insertdeque(char **av){
 			if (av[i][j] < '0' || av[i][j] > '9')
 				throw NotANumber();
 		}
-		std::deque<long> ins;
+		std::deque<int> ins;
 		ins.push_back(std::atol(av[i]));
 		if (find(deque.begin(), deque.end(), ins) == deque.end())
 			deque.push_back(ins);
@@ -126,32 +126,55 @@ void PmergeMe::sort(void){
 		sortDeque();
 }
 
+// template<class T, class C>
+// void mergeInsertion(T &array, C &elem){
+// 	size_t mid = array.size() / 2;
+// 	typename T::iterator it_b = array.begin();
+// 	typename T::iterator it_m = array.begin() + mid;
+// 	typename T::iterator it_e = array.end();
+// 	while (mid > 0){
+// 		if (it_b[0][0] > elem[0]){
+// 			it_m = it_b; break ;
+// 		}
+// 		if (it_e[0][0] < elem[0]){
+// 			it_m = it_e; break ;
+// 		}
+// 		mid /= 2;
+// 		if (it_m[0][0] < elem[0]){
+// 			it_b = it_m;
+// 			it_m += mid ;
+// 		}
+// 		else{
+// 			it_e = it_m;
+// 			it_m -= mid ;
+// 		}
+// 	}
+// 	if (it_m[0][0] < elem[0])
+// 		it_m++;
+// 	array.insert(it_m, elem);
+// }
+
 template<class T, class C>
-void mergeInsertion(T &array, C &elem){
-	size_t mid = array.size() / 2;
-	typename T::iterator it_b = array.begin();
-	typename T::iterator it_m = array.begin() + mid;
-	typename T::iterator it_e = array.end() - 1;
-	while (mid > 0){
-		if (it_b[0][0] > elem[0]){
-			it_m = it_b; break ;
-		}
-		if (it_e[0][0] < elem[0]){
-			it_m = it_e; break ;
-		}
-		mid /= 2;
-		if (it_m[0][0] < elem[0]){
-			it_b = it_m;
-			it_m += mid ;
-		}
-		else{
-			it_e = it_m;
-			it_m -= mid ;
-		}
-	}
-	if (it_m[0][0] < elem[0])
-		it_m++;
-	array.insert(it_m, elem);
+void mergeInsertion(T &array, C &elem) {
+    if (array.empty()) {
+        array.push_back(elem);
+        return;
+    }
+    
+    typename T::iterator left = array.begin();
+    typename T::iterator right = array.end();
+    
+    while (left < right) {
+        typename T::iterator mid = left + (right - left) / 2;
+        
+        if ((*mid)[0] < elem[0]) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+    }
+    
+    array.insert(left, elem);
 }
 
 void PmergeMe::sortVect(void){
@@ -165,7 +188,7 @@ void PmergeMe::sortVect(void){
 	while (undopairsVect());
 	if (odd == -1)
 		return ;
-	std::vector<long> elem;
+	std::vector<int> elem;
 	elem.push_back(odd);
 	mergeInsertion(vect, elem);
 }
@@ -181,7 +204,7 @@ void PmergeMe::sortDeque(void){
 	while (undopairsDeque());
 	if (odd == -1)
 		return ;
-	std::deque<long> elem;
+	std::deque<int> elem;
 	elem.push_back(odd);
 	mergeInsertion(deque, elem);
 }
@@ -243,8 +266,8 @@ bool PmergeMe::undopairsVect(void){
 	if (vect[0].size() == 1)
 		return false; //we are done
 	size_t size = vect[0].size() / 2; // what i need
-	std::vector<std::vector<long> > pend;
-	std::vector<long> tmp; //holds the moving pair
+	std::vector<std::vector<int> > pend;
+	std::vector<int> tmp; //holds the moving pair
 	for (size_t i = 0; i < vect.size(); i += 2){
 		if (vect[i].size() <= size)
 			break ; //nao precisamos de separar mais nada
@@ -264,7 +287,7 @@ bool PmergeMe::undopairsVect(void){
 	}
 	while (pend.size()){
 		for (size_t i = 0; i < vect.size(); i++){
-			if (vect[i][vect[i].size() - 1] > pend[0][pend[0].size() - 1] || vect[i + 1].size() < size){
+			if (vect[i][vect[i].size() - 1] > pend[0][pend[0].size() - 1] || vect[i + 1].size() < size || i + 1 == vect.size()){
 				vect.insert(vect.begin() + i, pend[0]);
 				pend.erase(pend.begin());
 				break ;
@@ -283,8 +306,8 @@ bool PmergeMe::undopairsDeque(void){
 	if (deque[0].size() == 1)
 		return false; //we are done
 	size_t size = deque[0].size() / 2; // what i need
-	std::deque<std::deque<long> > pend;
-	std::deque<long> tmp; //holds the moving pair
+	std::deque<std::deque<int> > pend;
+	std::deque<int> tmp; //holds the moving pair
 	for (size_t i = 0; i < deque.size(); i += 2){
 		if (deque[i].size() <= size)
 			break ; //nao precisamos de separar mais nada
@@ -304,7 +327,7 @@ bool PmergeMe::undopairsDeque(void){
 	}
 	while (pend.size()){
 		for (size_t i = 0; i < deque.size(); i++){
-			if (deque[i][deque[i].size() - 1] > pend[0][pend[0].size() - 1] || deque[i + 1].size() < size){
+			if (deque[i][deque[i].size() - 1] > pend[0][pend[0].size() - 1] || deque[i + 1].size() < size || i + 1 == deque.size()){
 				deque.insert(deque.begin() + i, pend[0]);
 				pend.erase(pend.begin());
 				break ;
