@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:54:29 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/10/13 15:12:44 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/11/03 12:00:48 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ class BitcoinExchange {
 		class LargeValue : public std::exception {
 			virtual const char *what() const throw();
 		};
+		class InvalidFormat : public std::exception {
+			virtual const char *what() const throw();
+		} ;
 		~BitcoinExchange();
 } ;
 

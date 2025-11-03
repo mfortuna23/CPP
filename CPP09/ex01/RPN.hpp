@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 11:37:42 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/10/17 18:03:19 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/11/03 14:03:36 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string>
 #include <sstream>
 #include <stack>
+#include <cstdlib>
 
 # define BLUE "\033[34m"
 # define RED "\033[31m"

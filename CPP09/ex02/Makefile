@@ -6,14 +6,14 @@
 #    By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/16 12:10:49 by mfortuna          #+#    #+#              #
-#    Updated: 2025/10/21 12:08:58 by mfortuna         ###   ########.fr        #
+#    Updated: 2025/11/03 14:58:59 by mfortuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= PmergeMe
 CPP		= c++
 CPPFLG	= -Wall -Wextra -Werror -std=c++98
-SRC		= main.cpp
+SRC		= main.cpp PmergeMe.cpp
 OBJS	= $(SRC:%.cpp=%.o)
 
 all: $(NAME)

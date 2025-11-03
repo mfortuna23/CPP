@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 13:11:06 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/10/17 14:46:31 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/11/03 12:16:04 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ BitcoinExchange::BitcoinExchange(){}
 BitcoinExchange::BitcoinExchange(std::ifstream *file){
 	// read file, storage no error handle
 	std::string buffer;
-	getline(*file, buffer); //first line does nothing
+	if (!getline(*file, buffer))
+		return ;
 	while(getline(*file, buffer)){
 		if (buffer.size() == 0)
 			continue ;
@@ -59,6 +60,10 @@ int checkValues(const data *storage){
 }
 
 void BitcoinExchange::printExchange(std::ifstream *wallet){
+	if (btc.begin() == btc.end()){
+		//std::cout << "Error: data.csv is empty\n";
+		return ;
+	}
 	std::string buffer;
 	getline(*wallet, buffer); //first line does nothing
 	while(getline(*wallet, buffer)){
@@ -66,9 +71,12 @@ void BitcoinExchange::printExchange(std::ifstream *wallet){
 			continue ;
 		data storage;
 		storage.year = -1; storage.month = -1; storage.day = -1; storage.value = -1;
-		std::string date = buffer.substr(0, 10);
-		sscanf(buffer.c_str(), "%d-%d-%d | %f", &storage.year, &storage.month, &storage.day, &storage.value);
 		try {
+			std::string date = buffer.substr(0, 10);
+			size_t dPos = buffer.find(" | ");
+			if (dPos == std::string::npos)
+				throw InvalidFormat();
+			sscanf(buffer.c_str(), "%d-%d-%d | %f", &storage.year, &storage.month, &storage.day, &storage.value);
 			int i = checkValues(&storage);
 			switch (i){
 				case 0:
@@ -105,6 +113,9 @@ const char *BitcoinExchange::LargeValue::what() const throw(){
 }
 const char *BitcoinExchange::NegativeValue::what() const throw(){
 	return "Error: not a positive number.";
+}
+const char *BitcoinExchange::InvalidFormat::what() const throw(){
+	return "Error: invalid format.";
 }
 
 BitcoinExchange::~BitcoinExchange(){}
