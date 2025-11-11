@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 11:05:58 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/11/11 10:21:51 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/11/11 12:13:24 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ int main(int ac, char **av){
 		timeVec = clock() - timeVec;
 		std::cout << "after\t";
 		vec.print();
-		clock_t timeDeq = clock();
-		de.sort();
-		timeDeq = clock() - timeDeq;
+		//clock_t timeDeq = clock();
+		//de.sort();
+		//timeDeq = clock() - timeDeq;
+		//de.print();
 		std::cout << "Time to process a range of " << ac - 1 << " elements with std::vector : " << static_cast<double>(timeVec) * 1000000.0 / CLOCKS_PER_SEC << " us\n";
-		std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque  : " << static_cast<double>(timeDeq) * 1000000.0 / CLOCKS_PER_SEC << " us\n";
+		//std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque  : " << static_cast<double>(timeDeq) * 1000000.0 / CLOCKS_PER_SEC << " us\n";
 	}
 	catch (std::exception &e){
 		std::cout << e.what();

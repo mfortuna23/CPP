@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 11:06:26 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/11/03 17:21:24 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/11/11 16:36:12 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class PmergeMe {
 		void sortVect(void);
 		void sortDeque(void);
 		bool makepairsDeque(void);
-		bool makepairsVect(void);
+		void makepairsVect(void);
 		bool undopairsVect(void);
 		bool undopairsDeque(void);
 	public :

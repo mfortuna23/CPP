@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:58:26 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/11/11 10:25:09 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/11/11 16:36:40 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,19 +128,29 @@ void PmergeMe::sort(void){
 
 // template<class T, class C>
 // void mergeInsertion(T &array, C &elem){
-// 	size_t mid = array.size() / 2;
+// 	std::cout << elem[elem.size() - 1] << std::endl;
+// 	size_t arraySize = 0;
+// 	for (size_t i = array.size() - 1; i > 0; i--){
+// 		if (array[i].size() == elem.size()){
+// 			arraySize = i;
+// 			break;
+// 		}
+// 	}
+// 	size_t mid = arraySize / 2;
+// 	size_t size = elem.size() - 1;
 // 	typename T::iterator it_b = array.begin();
 // 	typename T::iterator it_m = array.begin() + mid;
-// 	typename T::iterator it_e = array.end();
+// 	typename T::iterator it_e = array.begin() + arraySize;
+	
 // 	while (mid > 0){
-// 		if (it_b[0][0] > elem[0]){
+// 		if (it_b[0][size] > elem[elem.size() - 1]){
 // 			it_m = it_b; break ;
 // 		}
-// 		if (it_e[0][0] < elem[0]){
+// 		if (it_e[0][size] < elem[elem.size() - 1]){
 // 			it_m = it_e; break ;
 // 		}
 // 		mid /= 2;
-// 		if (it_m[0][0] < elem[0]){
+// 		if (it_m[0][size] < elem[elem.size() - 1]){
 // 			it_b = it_m;
 // 			it_m += mid ;
 // 		}
@@ -149,25 +159,36 @@ void PmergeMe::sort(void){
 // 			it_m -= mid ;
 // 		}
 // 	}
-// 	if (it_m[0][0] < elem[0])
+// 	if (it_m[0][size] < elem[elem.size() - 1])
 // 		it_m++;
 // 	array.insert(it_m, elem);
+// 	elem.clear();
 // }
 
 template<class T, class C>
 void mergeInsertion(T &array, C &elem) {
-    if (array.empty()) {
-        array.push_back(elem);
-        return;
-    }
-    
+		// std::cout << elem[elem.size() - 1] << std::endl;
+	size_t arraySize = 0;
+	for (size_t i = array.size() - 1; i > 0; i--){
+		if (array[i].size() == elem.size()){
+			arraySize = i;
+			break;
+		}
+	}
+	//size_t mid = arraySize / 2;
+	size_t size = elem.size() - 1;
     typename T::iterator left = array.begin();
-    typename T::iterator right = array.end();
+    typename T::iterator right = array.begin() + arraySize + 1;
     
     while (left < right) {
         typename T::iterator mid = left + (right - left) / 2;
-        
-        if ((*mid)[0] < elem[0]) {
+		// if (left[0][size] > elem[elem.size() - 1]){
+		// 	break ;
+		// }
+		// if (right[0][size] < elem[elem.size() - 1]){
+		// 	left = right; break ;
+		// }
+        if ((*mid)[size] < elem[size]) {
             left = mid + 1;
         } else {
             right = mid;
@@ -184,13 +205,15 @@ void PmergeMe::sortVect(void){
 		odd = vect[vect.size() - 1][0];
 		vect.pop_back();
 	}
-	while (makepairsVect());
-	while (undopairsVect());
+	makepairsVect();
 	if (odd == -1)
 		return ;
+	std::cout << "saved number: "<< odd << std::endl;
 	std::vector<int> elem;
 	elem.push_back(odd);
 	mergeInsertion(vect, elem);
+	if (isSorted(vect))
+		std::cout << "\n\n\n\n\n\n\n";
 }
 
 void PmergeMe::sortDeque(void){
@@ -214,9 +237,9 @@ void concatenate(T &dest, T &src){
 	dest.insert(dest.end(), src.begin(), src.end());
 }
 
-bool PmergeMe::makepairsVect(void){ //first part
+void PmergeMe::makepairsVect(void){ //first part
 	if (vect.empty() || vect[0].empty())
-		return false ; // or maybe throw
+		return ; // or maybe throw
 	size_t size = vect[0].size(); // what i need
 	for (size_t i = 0; i < vect.size(); i++){
 		if (vect[i].size() < size || (i + 1) == vect.size())
@@ -231,8 +254,31 @@ bool PmergeMe::makepairsVect(void){ //first part
 		}
 	}
 	if (vect.size() == 1 || vect[0].size() > vect[1].size())
-		return false ;
-	return true ;
+		return ;
+	makepairsVect();
+	std::vector<std::vector<int> > pend;
+	for (size_t current = 2; current < vect.size(); current++){
+		if (vect[current].size() < vect[0].size()) //it doesnt count for this stage
+			break ;
+		pend.push_back(vect[current]);
+		vect.erase(vect.begin() + current);
+	}
+	
+	while (pend.size()){
+		std::vector<int> tmp;
+		tmp = pend[0];
+		mergeInsertion(vect, tmp);
+		pend.erase(pend.begin());
+		tmp.clear();
+		// for (size_t i = 0; i < vect.size(); i++){
+		// 	if (vect[i][vect[i].size() - 1] > pend[0][pend[0].size() - 1] || vect[i + 1].size() < size){
+		// 		vect.insert(vect.begin() + i, pend[0]);
+		// 		
+		// 		break ;
+		// 	}
+		// }
+	}
+	pend.clear();
 }
 
 bool PmergeMe::makepairsDeque(void){
@@ -266,16 +312,16 @@ bool PmergeMe::undopairsVect(void){
 		return false; //we are done
 	size_t size = vect[0].size() / 2; // what i need
 	std::vector<std::vector<int> > pend;
-	std::vector<int> tmp; //holds the moving pair
+	//std::vector<int> tmp; //holds the moving pair
 	for (size_t i = 0; i < vect.size(); i += 2){
 		if (vect[i].size() <= size)
 			break ; //nao precisamos de separar mais nada
-		while (vect[i].size() > size){ //until we reach what we need
-			tmp.insert(tmp.begin(), vect[i][vect[i].size() -1]);
-			vect[i].pop_back();
-		}
-		vect.insert(vect.begin() + i + 1, tmp);
-		tmp.clear();
+		// while (vect[i].size() > size){ //until we reach what we need
+		// 	tmp.insert(tmp.begin(), vect[i][vect[i].size() -1]);
+		// 	vect[i].pop_back();
+		// }
+		vect.insert(vect.begin() + i + 1, std::vector<int>(vect[i].begin() + size, vect[i].end()));
+		vect[i].resize(size); 
 	}
 	//first 2 pairs stays, one goes other stays...
 	for (size_t current = 2; current < vect.size(); current++){
@@ -284,15 +330,22 @@ bool PmergeMe::undopairsVect(void){
 		pend.push_back(vect[current]);
 		vect.erase(vect.begin() + current);
 	}
+	
 	while (pend.size()){
-		for (size_t i = 0; i < vect.size(); i++){
-			if (vect[i][vect[i].size() - 1] > pend[0][pend[0].size() - 1] || vect[i + 1].size() < size || i + 1 == vect.size()){
-				vect.insert(vect.begin() + i, pend[0]);
-				pend.erase(pend.begin());
-				break ;
-			}
-		}
+		std::vector<int> tmp;
+		tmp = pend[0];
+		mergeInsertion(vect, tmp);
+		pend.erase(pend.begin());
+		tmp.clear();
+		// for (size_t i = 0; i < vect.size(); i++){
+		// 	if (vect[i][vect[i].size() - 1] > pend[0][pend[0].size() - 1] || vect[i + 1].size() < size){
+		// 		vect.insert(vect.begin() + i, pend[0]);
+		// 		
+		// 		break ;
+		// 	}
+		// }
 	}
+	pend.clear();
 	return true;
 }
 
