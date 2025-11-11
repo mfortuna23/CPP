@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:58:26 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/11/03 17:21:24 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/11/11 10:25:09 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void PmergeMe::insertVect(char **av){
 	vect.clear();
 	for (int i = 0; av[i]; i++){
 		for (int j = 0; av[i][j]; j++){
-			if (av[i][j] < '0' || av[i][j] > '9')
+			 if (!std::isdigit(av[i][j]))
 				throw NotANumber(); 
 		}
 		std::vector<int> ins;
@@ -210,9 +210,8 @@ void PmergeMe::sortDeque(void){
 }
 
 template<class T>
-void concatenate(T &src, T &dest){
-	for (size_t i = 0; i < dest.size(); i++)
-		src.push_back(dest[i]);
+void concatenate(T &dest, T &src){
+	dest.insert(dest.end(), src.begin(), src.end());
 }
 
 bool PmergeMe::makepairsVect(void){ //first part
