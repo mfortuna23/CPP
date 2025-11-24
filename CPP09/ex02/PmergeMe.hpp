@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 11:06:26 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/11/13 11:16:56 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/11/24 16:08:56 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ template <class T>
 bool isSorted(T &other){
 	int tmp = 0;
 	for (size_t y = 0; y < other.size(); y++){
-		if (other[y][0] < tmp)
+		if (other[y][0] < tmp){
+			std::cout << "\n\n" << tmp << "is bigger than " << other[y][0] << std::endl;
 			return false;
+		}
 		tmp = other[y][0];
 	}
 	return true;
@@ -87,7 +89,7 @@ void concatenate(T &dest, T &src){
 }
 
 template<class T, class C>
-void mergeInsertion(T &array, C &elem) {
+void mergeInsertion(T &array, C &elem, size_t max) {
 		// std::cout << elem[elem.size() - 1] << std::endl;
 	size_t arraySize = 0;
 	for (size_t i = array.size() - 1; i > 0; i--){
@@ -96,24 +98,21 @@ void mergeInsertion(T &array, C &elem) {
 			break;
 		}
 	}
+	if (max < arraySize)
+		arraySize = max;
 	//size_t mid = arraySize / 2;
-	size_t size = elem.size() - 1;
+	size_t size = elem.size() - 2;
+	if (size == static_cast<size_t>(-1))
+		size = 0;
     typename T::iterator left = array.begin();
     typename T::iterator right = array.begin() + arraySize + 1;
     
     while (left < right) {
         typename T::iterator mid = left + (right - left) / 2;
-		// if (left[0][size] > elem[elem.size() - 1]){
-		// 	break ;
-		// }
-		// if (right[0][size] < elem[elem.size() - 1]){
-		// 	left = right; break ;
-		// }
-        if ((*mid)[size] < elem[size]) {
+        if ((*mid)[size] < elem[size])
             left = mid + 1;
-        } else {
+        else
             right = mid;
-        }
     }
     
     array.insert(left, elem);
@@ -161,6 +160,50 @@ std::vector<std::vector<int> > PmergeMe::getVect() const {return vect;}
 std::deque<std::deque<int> > PmergeMe::getDeque() const {return deque;}
 
 
+int jacobsNumber(int n){
+	if (n == 0) return 0;
+	if (n == 1) return 1;
+	return jacobsNumber(n - 1) + 2 * jacobsNumber(n - 2);
+}
+
+template<class T>
+void pending(T &container){
+	for (size_t i = 0; container.size() > i; i++)
+		container[i].push_back(i);
+	//pend every 2 elements aka all b elements minus the first
+	T pend;
+	for (size_t current = 2; current < container.size(); current++){
+		if (container[current].size() < container[0].size()) //it doesnt count for this stage
+			break ;
+		pend.push_back(container[current]);
+		container.erase(container.begin() + current);
+	}
+	//add from pend acoording to jacobs law
+	int jacobsIdx = 3; 
+	size_t index = 0;
+	size_t inserted_count = 0;
+	size_t pend_size = pend.size();
+	
+	while (inserted_count < pend_size){
+		int currJacobs = jacobsNumber(jacobsIdx);
+		size_t n_to_insert = currJacobs - jacobsNumber(jacobsIdx - 1);
+		if (n_to_insert > pend.size())
+			n_to_insert = pend.size();
+		size_t right_bound = n_to_insert;
+		for (size_t k = 0; k < n_to_insert; k++) {
+			index = right_bound - 1 - k;
+			mergeInsertion(container, pend[index], pend[index][pend[index].size() - 1] + k);
+			pend.erase(pend.begin() + index);
+			inserted_count++;
+		}
+		jacobsIdx++;
+	}
+	//remove their number
+	for (size_t i = 0; container.size() > i; i++)
+		container[i].pop_back();
+	pend.clear();
+}
+
 void PmergeMe::sortVect(std::vector<std::vector<int> > &container){
 	size_t index = container[0].size() - 1; // we compare the last element
 	//first compare pairs and swap when needed
@@ -171,9 +214,9 @@ void PmergeMe::sortVect(std::vector<std::vector<int> > &container){
 		if (container[i - 1][index] > container[i][index])
 			std::swap(container[i - 1], container[i]);
 	}
-	//second check if we keep doing pairss
-	if (container.size() < 4 || !(container[0].size() == container[1].size() && \
-	container[1].size() == container[2].size() && container[2].size() == container[3].size()))
+	//print();
+	//second check if we keep doing pairs
+	if (container.size() < 2)
 		return ;
 	//third create new pairs
 	for (size_t i = 0; i < container.size(); i++){
@@ -182,8 +225,21 @@ void PmergeMe::sortVect(std::vector<std::vector<int> > &container){
 		concatenate(container[i], container[i + 1]);
 		container.erase(container.begin() + i + 1);
 	}
+	
+	std::vector<int> odd_pair;
+	bool has_odd = false;
+	if (container.size() > 0 && container.back().size() != container[0].size()) {
+		odd_pair = container.back();
+		container.pop_back();
+		has_odd = true;
+	}
+	
 	//loop
 	sortVect(container);
+	
+	if (has_odd) {
+		container.push_back(odd_pair);
+	}
 	//separate pairs
 	size_t size = container[0].size() / 2; // size needed
 	for (size_t i = 0; i < container.size(); i += 2){
@@ -193,22 +249,8 @@ void PmergeMe::sortVect(std::vector<std::vector<int> > &container){
 		container[i].resize(size); 
 	}
 	//print();
-	//pend every 2 elements
-	std::vector<std::vector<int> > pend;
-	for (size_t current = 2; current < container.size(); current++){
-		if (container[current].size() < container[0].size()) //it doesnt count for this stage
-			break ;
-		pend.push_back(container[current]);
-		container.erase(container.begin() + current);
-	}
-	while (pend.size()){
-		std::vector<int> tmp;
-		tmp = pend[0];
-		mergeInsertion(container, tmp);
-		pend.erase(pend.begin());
-		tmp.clear();
-	}
-	pend.clear();
+	pending(container);
+	//give every pair their number
 }
 
 
@@ -217,14 +259,15 @@ void PmergeMe::sort(void){
 		return ;
 	timeVect = clock();
 	sortVect(vect);
+	//pending(vect);
 	if(odd > -1){
 		std::vector<int> a;
 		a.push_back(odd);
-		mergeInsertion(vect, a);
+		mergeInsertion(vect, a, vect.size());
 	}
 	timeVect = clock() - timeVect;
-	// if (isSorted(vect))
-	// 	std::cout << "\n\n\n\n\n\n";
+	if (isSorted(vect))
+		std::cout << "\n\n\n\n\n\n";
 	// timeDeque = clock();
 	// sortDeque();
 	// timeDeque = clock() - timeDeque;
