@@ -6,309 +6,179 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:58:26 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/11/12 12:03:17 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/12/04 17:11:42 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
+template<class T, class C>
+void insertC(T &container, C &elem, char **av){
+	container.clear();
+	for (int i = 0; av[i]; i++){
+		for (int j = 0; av[i][j]; j++){
+			 if (!std::isdigit(av[i][j]))
+				throw PmergeMe::NotANumber(); 
+		}
+		elem.push_back(std::atol(av[i]));
+		if (find(container.begin(), container.end(), elem) == container.end())
+			container.push_back(elem);
+		else //duplicates
+			throw PmergeMe::DuplicatedNumber(); 
+		elem.pop_back();
+	}
+}
+template<class T>
+void concatenate(T &dest, T &src){
+	dest.insert(dest.end(), src.begin(), src.end());
+}
 
-
-// void PmergeMe::insertVect(char **av){
-// 	vect.clear();
-// 	for (int i = 0; av[i]; i++){
-// 		for (int j = 0; av[i][j]; j++){
-// 			 if (!std::isdigit(av[i][j]))
-// 				throw NotANumber(); 
-// 		}
-// 		std::vector<int> ins;
-// 		ins.push_back(std::atol(av[i]));
-// 		if (find(vect.begin(), vect.end(), ins) == vect.end())
-// 			vect.push_back(ins);
-// 		else //duplicates
-// 			throw DuplicatedNumber(); 
-// 		}
-// }
-
-// void PmergeMe::insertdeque(char **av){
-// 	deque.clear();
-// 	for (int i = 0; av[i]; i++){
-// 		for (int j = 0; av[i][j]; j++){
-// 			if (av[i][j] < '0' || av[i][j] > '9')
-// 				throw NotANumber();
-// 		}
-// 		std::deque<int> ins;
-// 		ins.push_back(std::atol(av[i]));
-// 		if (find(deque.begin(), deque.end(), ins) == deque.end())
-// 			deque.push_back(ins);
-// 		else //duplicates
-// 			throw DuplicatedNumber();
-// 		}
-// }
-
-// void PmergeMe::insert(char **av){
-// 	if (vect.empty())
-// 		insertdeque(av);
-// 	else
-// 		insertVect(av);
-// }
-
-// void PmergeMe::sort(void){
-// 	if (deque.empty())
-// 		sortVect();
-// 	else
-// 		sortDeque();
-// }
-
-// // template<class T, class C>
-// // void mergeInsertion(T &array, C &elem){
-// // 	std::cout << elem[elem.size() - 1] << std::endl;
-// // 	size_t arraySize = 0;
-// // 	for (size_t i = array.size() - 1; i > 0; i--){
-// // 		if (array[i].size() == elem.size()){
-// // 			arraySize = i;
-// // 			break;
-// // 		}
-// // 	}
-// // 	size_t mid = arraySize / 2;
-// // 	size_t size = elem.size() - 1;
-// // 	typename T::iterator it_b = array.begin();
-// // 	typename T::iterator it_m = array.begin() + mid;
-// // 	typename T::iterator it_e = array.begin() + arraySize;
-	
-// // 	while (mid > 0){
-// // 		if (it_b[0][size] > elem[elem.size() - 1]){
-// // 			it_m = it_b; break ;
-// // 		}
-// // 		if (it_e[0][size] < elem[elem.size() - 1]){
-// // 			it_m = it_e; break ;
-// // 		}
-// // 		mid /= 2;
-// // 		if (it_m[0][size] < elem[elem.size() - 1]){
-// // 			it_b = it_m;
-// // 			it_m += mid ;
-// // 		}
-// // 		else{
-// // 			it_e = it_m;
-// // 			it_m -= mid ;
-// // 		}
-// // 	}
-// // 	if (it_m[0][size] < elem[elem.size() - 1])
-// // 		it_m++;
-// // 	array.insert(it_m, elem);
-// // 	elem.clear();
-// // }
-
-// template<class T, class C>
-// void mergeInsertion(T &array, C &elem) {
-// 		// std::cout << elem[elem.size() - 1] << std::endl;
-// 	size_t arraySize = 0;
-// 	for (size_t i = array.size() - 1; i > 0; i--){
-// 		if (array[i].size() == elem.size()){
-// 			arraySize = i;
-// 			break;
-// 		}
-// 	}
-// 	//size_t mid = arraySize / 2;
-// 	size_t size = elem.size() - 1;
-//     typename T::iterator left = array.begin();
-//     typename T::iterator right = array.begin() + arraySize + 1;
+template<class T, class C>
+void mergeInsertion(T &array, C &elem, size_t max) {
+	size_t arraySize = 0;
+	for (size_t i = array.size() - 1; i > 0; i--){
+		if (array[i].size() == elem.size()){
+			arraySize = i;
+			break;
+		}
+	}
+	if (max < arraySize)
+		arraySize = max;
+	size_t size = elem.size() - 1;
+    typename T::iterator left = array.begin();
+    typename T::iterator right = array.begin() + arraySize + 1;
     
-//     while (left < right) {
-//         typename T::iterator mid = left + (right - left) / 2;
-// 		// if (left[0][size] > elem[elem.size() - 1]){
-// 		// 	break ;
-// 		// }
-// 		// if (right[0][size] < elem[elem.size() - 1]){
-// 		// 	left = right; break ;
-// 		// }
-//         if ((*mid)[size] < elem[size]) {
-//             left = mid + 1;
-//         } else {
-//             right = mid;
-//         }
-//     }
+    while (left < right) {
+        typename T::iterator mid = left + (right - left) / 2;
+        if ((*mid)[size] < elem[size])
+            left = mid + 1;
+        else
+            right = mid;
+    }
     
-//     array.insert(left, elem);
-// }
+    array.insert(left, elem);
+}
 
-// void PmergeMe::sortVect(void){
-// 	// if (isSorted(vect))
-// 	// 	return ;
-// 	if ((vect.size() % 2) != 0){
-// 		odd = vect[vect.size() - 1][0];
-// 		vect.pop_back();
-// 	}
-// 	makepairsVect();
-// 	if (odd == -1)
-// 		return ;
-// 	std::vector<int> elem;
-// 	elem.push_back(odd);
-// 	mergeInsertion(vect, elem);
-// 	if (isSorted(vect))
-// 		std::cout << "\n\n\n\n\n\n\n";
-// }
+const char *PmergeMe::NotANumber::what() const throw(){
+	return "Recived a non number as an argument\n";
+}
+const char *PmergeMe::NegativeNumber::what() const throw(){
+	return "Recived a non positive number as an argument\n";
+}
+const char *PmergeMe::DefaultConstructor::what() const throw(){
+	return "Default constructor called\n";
+}
+const char *PmergeMe::DuplicatedNumber::what() const throw(){
+	return "Recived a duplicated number as an argument\n";
+}
 
-// void PmergeMe::sortDeque(void){
-// 	// if (isSorted(deque))
-// 	// 	return ;
-// 	if ((deque.size() % 2) != 0){ // easier to work with paired i guess ...
-// 		odd = deque[deque.size() - 1][0];
-// 		deque.pop_back();
-// 	}
-// 	while (makepairsDeque());
-// 	while (undopairsDeque());
-// 	if (odd == -1)
-// 		return ;
-// 	std::deque<int> elem;
-// 	elem.push_back(odd);
-// 	mergeInsertion(deque, elem);
-// }
+PmergeMe::PmergeMe(char **av){
+	std::vector<int> a;
+	std::deque<int> b;
+	insertC(vect, a, av);
+	insertC(deque, b, av);
+}
 
-// template<class T>
-// void concatenate(T &dest, T &src){
-// 	dest.insert(dest.end(), src.begin(), src.end());
-// }
+PmergeMe::PmergeMe(){
+	throw DefaultConstructor(); 
+}
+PmergeMe::PmergeMe(const PmergeMe &other){
+			*this = other;}
+PmergeMe &PmergeMe::operator=(const PmergeMe &other){
+			vect = other.getVect();
+			deque = other.getDeque();
+			return *this;
+		}
+PmergeMe::~PmergeMe(){};
+std::vector<std::vector<int> > PmergeMe::getVect() const {return vect;}
+std::deque<std::deque<int> > PmergeMe::getDeque() const {return deque;}
 
-// void PmergeMe::makepairsVect(void){ //first part
-// 	size_t size = vect[0].size(); // what i need
-// 	for (size_t i = 0; i < vect.size(); i++){
-// 		if (vect[i].size() < size || (i + 1) == vect.size())
-// 			break ; // all pars for this stage completed
-// 		//std::cout << vect[i][vect[i].size() - 1] << "   " << vect[i + 1][vect[i + 1].size() - 1] << std::endl;
-// 		if (vect[i][vect[i].size() - 1] > vect[i + 1][vect[i + 1].size() - 1]){
-// 			concatenate(vect[i + 1], vect[i]);
-// 			vect.erase(vect.begin() + i);
-// 		} else {
-// 			concatenate(vect[i], vect[i + 1]);
-// 			vect.erase(vect.begin() + i + 1);
-// 		}
-// 	}
-// 	if (vect.size() == 2 || vect[0].size() > vect[1].size())
-// 		return ;
-// 	makepairsVect();
-// 	std::vector<std::vector<int> > pend;
-// 	for (size_t current = 2; current < vect.size(); current++){
-// 		if (vect[current].size() < vect[0].size()) //it doesnt count for this stage
-// 			break ;
-// 		pend.push_back(vect[current]);
-// 		vect.erase(vect.begin() + current);
-// 	}
-	
-// 	while (pend.size()){
-// 		std::vector<int> tmp;
-// 		tmp = pend[0];
-// 		mergeInsertion(vect, tmp);
-// 		pend.erase(pend.begin());
-// 		tmp.clear();
-// 	}
-// 	pend.clear();
-// }
 
-// bool PmergeMe::makepairsDeque(void){
-// 	if (deque.empty() || deque[0].empty())
-// 		return false ; // or maybe throw
-// 	size_t size = deque[0].size(); // what i need
-// 	for (size_t i = 0; i < deque.size(); i++){
-// 		if (deque[i].size() < size || (i + 1) == deque.size())
-// 			return true; // all pars for this stage completed
-// 		//std::cout << deque[i][deque[i].size() - 1] << "   " << deque[i + 1][deque[i + 1].size() - 1] << std::endl;
-// 		if (deque[i][deque[i].size() - 1] > deque[i + 1][deque[i + 1].size() - 1]){
-// 			concatenate(deque[i + 1], deque[i]);
-// 			deque.erase(deque.begin() + i);
-// 		} else {
-// 			concatenate(deque[i], deque[i + 1]);
-// 			deque.erase(deque.begin() + i + 1);
-// 		}
-// 	}
-// 	if (deque.size() == 1 || deque[0].size() > deque[1].size())
-// 		return false ;
-// 	return true ;
-// }
+int jacobsNumber(int n){
+	return round((pow(2, n + 1) + pow(-1, n)) / 3);
+}
 
-// bool PmergeMe::undopairsVect(void){
-// 	//split pars
-// 	//consider first size as reference
-// 	//first 2 pairs stay, every 2 pars out in pending matrix
-// 	if (vect.empty() || vect[0].empty())
-// 		return false ; // or maybe throw
-// 	if (vect[0].size() == 1)
-// 		return false; //we are done
-// 	size_t size = vect[0].size() / 2; // what i need
-// 	std::vector<std::vector<int> > pend;
-// 	//std::vector<int> tmp; //holds the moving pair
-// 	for (size_t i = 0; i < vect.size(); i += 2){
-// 		if (vect[i].size() <= size)
-// 			break ; //nao precisamos de separar mais nada
-// 		// while (vect[i].size() > size){ //until we reach what we need
-// 		// 	tmp.insert(tmp.begin(), vect[i][vect[i].size() -1]);
-// 		// 	vect[i].pop_back();
-// 		// }
-// 		vect.insert(vect.begin() + i + 1, std::vector<int>(vect[i].begin() + size, vect[i].end()));
-// 		vect[i].resize(size); 
-// 	}
-// 	//first 2 pairs stays, one goes other stays...
-// 	for (size_t current = 2; current < vect.size(); current++){
-// 		if (vect[current].size() < size) //it doesnt count for this stage
-// 			break ;
-// 		pend.push_back(vect[current]);
-// 		vect.erase(vect.begin() + current);
-// 	}
-	
-// 	while (pend.size()){
-// 		std::vector<int> tmp;
-// 		tmp = pend[0];
-// 		mergeInsertion(vect, tmp);
-// 		pend.erase(pend.begin());
-// 		tmp.clear();
-// 		// for (size_t i = 0; i < vect.size(); i++){
-// 		// 	if (vect[i][vect[i].size() - 1] > pend[0][pend[0].size() - 1] || vect[i + 1].size() < size){
-// 		// 		vect.insert(vect.begin() + i, pend[0]);
-// 		// 		
-// 		// 		break ;
-// 		// 	}
-// 		// }
-// 	}
-// 	pend.clear();
-// 	return true;
-// }
+template<class T>
+void pending(T &container){
+	T pend;
+	for (size_t current = 2; current < container.size(); current++){
+		if (container[current].size() < container[0].size()) //it doesnt count for this stage
+			break ;
+		pend.push_back(container[current]);
+		container.erase(container.begin() + current);
+	}
+	if (pend.size() == 0)
+		return ;
+	size_t lastJacob = 0, currJacob = 0, index = 0, added = 0;
+	mergeInsertion(container, pend[0], 2);
+	for (int k = 0; lastJacob < pend.size(); k++){
+		if (currJacob >= pend.size())
+			index = pend.size() - 1;
+		else
+			index = currJacob;
+		for(; index >= 0; index--){
+			if (index <= lastJacob)
+				break ;
+			mergeInsertion(container, pend[index], index + 2 + added);
+			//std::cout << "mid insertion is :" << pend[index][pend[index].size() - 1] << std::endl;
+			added++;
+		}
+		lastJacob = currJacob;
+		currJacob = jacobsNumber(k);
+		//std::cout << currJacob << std::endl;
+	}
+	pend.clear();
+}
 
-// bool PmergeMe::undopairsDeque(void){
-// 	//split pars
-// 	//consider first size as reference
-// 	//first 2 pairs stay, every 2 pars out in pending matrix
-// 	if (deque.empty() || deque[0].empty())
-// 		return false ; // or maybe throw
-// 	if (deque[0].size() == 1)
-// 		return false; //we are done
-// 	size_t size = deque[0].size() / 2; // what i need
-// 	std::deque<std::deque<int> > pend;
-// 	std::deque<int> tmp; //holds the moving pair
-// 	for (size_t i = 0; i < deque.size(); i += 2){
-// 		if (deque[i].size() <= size)
-// 			break ; //nao precisamos de separar mais nada
-// 		while (deque[i].size() > size){ //until we reach what we need
-// 			tmp.insert(tmp.begin(), deque[i][deque[i].size() -1]);
-// 			deque[i].pop_back();
-// 		}
-// 		deque.insert(deque.begin() + i + 1, tmp);
-// 		tmp.clear();
-// 	}
-// 	//first 2 pairs stays, one goes other stays...
-// 	for (size_t current = 2; current < deque.size(); current++){
-// 		if (deque[current].size() < size) //it doesnt count for this stage
-// 			break ;
-// 		pend.push_back(deque[current]);
-// 		deque.erase(deque.begin() + current);
-// 	}
-// 	while (pend.size()){
-// 		for (size_t i = 0; i < deque.size(); i++){
-// 			if (deque[i][deque[i].size() - 1] > pend[0][pend[0].size() - 1] || deque[i + 1].size() < size || i + 1 == deque.size()){
-// 				deque.insert(deque.begin() + i, pend[0]);
-// 				pend.erase(pend.begin());
-// 				break ;
-// 			}
-// 		}
-// 	}
-// 	return true;
-// }
+template <class T, class C>
+void sorting(T &container, C elem){
+	size_t index = container[0].size() - 1; // we compare the last element
+	//first compare pairs and swap when needed
+	for (size_t i = 1; i < container.size(); i+= 2){
+		if (container[i - 1].size() < container[0].size() || container[i].size() < container[0].size())
+			break ; // can't compare diferent sized containers
+		if (container[i - 1][index] > container[i][index])
+			std::swap(container[i - 1], container[i]);
+	}
+	//second check if we keep doing pairs
+	if (container.size() < 2 || container[1].size() != container[0].size())
+		return ;
+	//third create new pairs
+	for (size_t i = 0; i < container.size(); i++){
+		if ((i + 1) >= container.size() || container[i].size() != container[i + 1].size())
+			break ;
+		concatenate(container[i], container[i + 1]);
+		container.erase(container.begin() + i + 1);
+	}
+	//loop
+	sorting(container, elem);
+	//separate pairs
+	size_t size = container[0].size() / 2; // size needed
+	for (size_t i = 0; i < container.size(); i += 2){
+		if (container[i].size() <= size)
+			break ; //We dont need to separate more
+		container.insert(container.begin() + i + 1, C(container[i].begin() + size, container[i].end()));
+		container[i].resize(size); 
+	}
+	pending(container);
+}
+
+void PmergeMe::sort(void){
+	if (vect.size() == 0 || vect.size() != deque.size())
+		return ;
+	timeVect = clock();
+	sorting(vect, std::vector<int>());
+	timeVect = clock() - timeVect;
+	timeDeque = clock();
+	sorting(deque, std::deque<int>());
+	timeDeque = clock() - timeDeque;
+}
+
+void PmergeMe::print(void){
+	for (size_t i = 0; i < vect.size(); i++){
+		for (size_t j = 0; j < vect[i].size(); j++)
+			std::cout << vect[i][j] << " ";
+		//std::cout << std::endl;
+	}
+	std::cout << std::endl;
+}

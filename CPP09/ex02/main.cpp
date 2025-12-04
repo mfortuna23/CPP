@@ -6,13 +6,14 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 11:05:58 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/11/24 15:05:52 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/12/04 13:36:11 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <ctime>
 #include <set>
+#include <iomanip>
 
 int main(int ac, char **av){
 	if (ac < 3)
@@ -24,8 +25,10 @@ int main(int ac, char **av){
 		sorting.sort(); 
 		std::cout << "after:\t";
 		sorting.print();
-		std::cout << "Time to process a range of " << ac - 1 << " elements with std::vector : " << static_cast<double>(sorting.timeVect) * 1000000.0 / CLOCKS_PER_SEC << " us\n";
-		//std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque  : " << static_cast<double>(timeDeq) * 1000000.0 / CLOCKS_PER_SEC << " us\n";
+		std::cout << "Time to process a range of " << ac - 1 << " elements with std::vector : " << std::fixed << std::setprecision(1) << static_cast<double>(sorting.timeVect) * 1000000 / CLOCKS_PER_SEC << " us\n";
+		std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque  : " << std::fixed << std::setprecision(1) << static_cast<double>(sorting.timeDeque) * 1000000 / CLOCKS_PER_SEC << " us\n";
+		if (isSorted(sorting.getDeque()) && isSorted(sorting.getVect()))
+			std::cout << "SORTED" << std::endl;
 	}
 	catch (std::exception &e){
 		std::cout << e.what();
