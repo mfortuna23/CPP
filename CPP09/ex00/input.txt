@@ -1,8 +1,8 @@
 date | value
-2011-01-03 | 3
+02006-01-03 | 3
 2011-01-03 | 2
 2011-01-03 | 1
-2011-01-03 | 1.2
+2011-01-03 | 1.2.2
 2011-01-09 | 1
 2012-01-11 | -1
 2001-42-42
@@ -11,4 +11,4 @@ date | value
 2012-01-11 | 2147483648
 
 
-
+aceitar ate 4 digitos no ano. verificar se o valor tem mais que um caracter

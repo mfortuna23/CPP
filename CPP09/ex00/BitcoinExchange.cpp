@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 13:11:06 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/11/03 12:16:04 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:57:59 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other){
 }
 
 int checkValues(const data *storage){
-	if (storage->year > 2025 || storage->year < 2008) // bitcoin exists since 2008
+	if (storage->year > 9999 || storage->year < 1000)
 		return 0;
 	if (storage->month < 0 || storage->month > 12)
 		return 0;
@@ -75,12 +75,12 @@ void BitcoinExchange::printExchange(std::ifstream *wallet){
 			std::string date = buffer.substr(0, 10);
 			size_t dPos = buffer.find(" | ");
 			if (dPos == std::string::npos)
-				throw InvalidFormat();
+				throw WrongDate(buffer);
 			sscanf(buffer.c_str(), "%d-%d-%d | %f", &storage.year, &storage.month, &storage.day, &storage.value);
 			int i = checkValues(&storage);
 			switch (i){
 				case 0:
-					throw WrongDate(date);
+					throw WrongDate(buffer);
 				case 1:
 					throw NegativeValue();
 				case 2:
@@ -88,7 +88,7 @@ void BitcoinExchange::printExchange(std::ifstream *wallet){
 				default :
 					std::map<std::string, data>::iterator btcIt = btc.end();
 					btcIt--;
-					while (btcIt->first > date)
+					while (btcIt->first > date && btcIt != btc.begin())
 						btcIt--;
 					if (btcIt == btc.begin())
 						std::cout << date << " => " << storage.value << " = "<< 0 << std::endl;
@@ -113,9 +113,6 @@ const char *BitcoinExchange::LargeValue::what() const throw(){
 }
 const char *BitcoinExchange::NegativeValue::what() const throw(){
 	return "Error: not a positive number.";
-}
-const char *BitcoinExchange::InvalidFormat::what() const throw(){
-	return "Error: invalid format.";
 }
 
 BitcoinExchange::~BitcoinExchange(){}

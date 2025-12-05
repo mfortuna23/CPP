@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:58:26 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/12/04 17:11:42 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:39:36 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ void insertC(T &container, C &elem, char **av){
 				throw PmergeMe::NotANumber(); 
 		}
 		elem.push_back(std::atol(av[i]));
-		if (find(container.begin(), container.end(), elem) == container.end())
-			container.push_back(elem);
-		else //duplicates
-			throw PmergeMe::DuplicatedNumber(); 
+		container.push_back(elem);
 		elem.pop_back();
 	}
 }
@@ -67,9 +64,6 @@ const char *PmergeMe::NegativeNumber::what() const throw(){
 }
 const char *PmergeMe::DefaultConstructor::what() const throw(){
 	return "Default constructor called\n";
-}
-const char *PmergeMe::DuplicatedNumber::what() const throw(){
-	return "Recived a duplicated number as an argument\n";
 }
 
 PmergeMe::PmergeMe(char **av){

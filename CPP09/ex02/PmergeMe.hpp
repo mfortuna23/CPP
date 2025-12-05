@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 11:06:26 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/12/04 13:39:36 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/12/05 12:44:07 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include <set>
 #include <iomanip>
 #include <cmath>
-
+ //numeros duplicados e ter atencao se passa o valor de int
 
 class PmergeMe {
 	private :
@@ -48,9 +48,6 @@ class PmergeMe {
 			virtual const char *what() const throw();
 		} ;
 		class DefaultConstructor : public std::exception {
-			virtual const char *what() const throw();
-		} ;
-		class DuplicatedNumber : public std::exception {
 			virtual const char *what() const throw();
 		} ;
 } ;

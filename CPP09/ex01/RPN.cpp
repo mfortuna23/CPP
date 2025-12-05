@@ -6,11 +6,13 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:02:54 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/10/17 18:55:00 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/12/05 12:43:42 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
+
+//atencao a divisao por zero
 
 RPN::RPN(){}
 RPN::RPN(const RPN &other){ *this = other;}
