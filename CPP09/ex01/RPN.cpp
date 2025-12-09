@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 18:02:54 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/12/05 12:43:42 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/12/06 23:08:40 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void RPN::calculate(char c){
 	if (c == '-'){
 		calc.push(first - second); return ;}
 	if (c == '/'){
+		if (second == 0){
+			calc.push(0); return ;}
 		calc.push(first / second); return ;}
 	if (c == '*'){
 		calc.push(first * second); return ;}

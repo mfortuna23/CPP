@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:58:26 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/12/05 11:39:36 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/12/09 11:54:26 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void insertC(T &container, C &elem, char **av){
 			 if (!std::isdigit(av[i][j]))
 				throw PmergeMe::NotANumber(); 
 		}
+		if (std::atol(av[i]) > INT_MAX)
+			throw PmergeMe::NotANumber();
 		elem.push_back(std::atol(av[i]));
 		container.push_back(elem);
 		elem.pop_back();
@@ -57,7 +59,7 @@ void mergeInsertion(T &array, C &elem, size_t max) {
 }
 
 const char *PmergeMe::NotANumber::what() const throw(){
-	return "Recived a non number as an argument\n";
+	return "Recived an invalid number as an argument\n";
 }
 const char *PmergeMe::NegativeNumber::what() const throw(){
 	return "Recived a non positive number as an argument\n";
