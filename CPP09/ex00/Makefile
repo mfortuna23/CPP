@@ -6,7 +6,7 @@
 #    By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/16 12:10:49 by mfortuna          #+#    #+#              #
-#    Updated: 2025/11/03 11:02:20 by mfortuna         ###   ########.fr        #
+#    Updated: 2025/12/09 12:12:29 by mfortuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ $(NAME): $(OBJS)
 	$(CPP) $(CPPFLG) $(OBJS) -o $(NAME)
 
 %.o: %.cpp
-	$(CPP) $(CPPFLG) -g -I . -c $< -o $@
+	$(CPP) $(CPPFLG) -I . -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
