@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:54:29 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/12/06 22:03:57 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/12/12 10:59:19 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 #include <fstream>
 #include <ctime>
 #include <string>
-#include <sstream> 
+#include <sstream>
+#include <cstdlib>
 
 typedef struct data_t {
 	int year;

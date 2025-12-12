@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 13:11:06 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/12/09 12:10:28 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/12/12 10:55:41 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ int checkValues(const data *storage){
 	if (storage->value > 1000)
 		return 2;
 	return 42;
+}
+
+bool isnumber(char c){
+	if (c >= '0' && c <= '9')
+		return true;
+	return false;
 }
 
 bool isNum(std::string num){

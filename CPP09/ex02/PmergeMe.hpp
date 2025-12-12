@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 11:06:26 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/12/05 12:44:07 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/12/12 10:59:32 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include <set>
 #include <iomanip>
 #include <cmath>
- //numeros duplicados e ter atencao se passa o valor de int
+#include <limits.h>
 
 class PmergeMe {
 	private :

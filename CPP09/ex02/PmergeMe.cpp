@@ -6,7 +6,7 @@
 /*   By: mfortuna <mfortuna@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:58:26 by mfortuna          #+#    #+#             */
-/*   Updated: 2025/12/09 11:54:26 by mfortuna         ###   ########.fr       */
+/*   Updated: 2025/12/12 11:04:33 by mfortuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void pending(T &container){
 			index = pend.size() - 1;
 		else
 			index = currJacob;
-		for(; index >= 0; index--){
+		for(; ; index--){
 			if (index <= lastJacob)
 				break ;
 			mergeInsertion(container, pend[index], index + 2 + added);
