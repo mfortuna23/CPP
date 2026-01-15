@@ -65,7 +65,7 @@ make
 ```
 Each exercise directory contains its own Makefile and executable.
 
-##📚 Learning Objectives
+## 📚 Learning Objectives
 
 Understand and apply C++ OOP principles
 
