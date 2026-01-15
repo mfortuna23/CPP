@@ -1,6 +1,6 @@
-#CPP Modules
+# CPP Modules
 
-##📖 Overview
+## 📖 Overview
 
 CPP Modules is a collection of progressive C++ projects developed as part of the 42 School curriculum. The goal of this project is to introduce and deepen understanding of modern C++ (C++98) concepts through hands-on exercises, moving from basic syntax to advanced object-oriented and generic programming principles.
 
